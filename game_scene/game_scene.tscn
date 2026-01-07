@@ -1,13 +1,45 @@
 [gd_scene load_steps=3 format=3 uid="uid://c7xaypxjnfy08"]
 
 [ext_resource type="Texture2D" uid="uid://dt68ugg1ewqjf" path="res://game_scene/map.png" id="1_n4lbc"]
-[ext_resource type="Script" uid="uid://jl7h2wxivcrh" path="res://game_scene/map_camera.gd" id="2_m1k14"]
+[ext_resource type="Script" uid="uid://b65i4u2umwejc" path="res://UI/static_ui/static_ui.gd" id="3_k340r"]
 
 [node name="GameScene" type="Node2D"]
 
 [node name="Map" type="Sprite2D" parent="."]
 texture = ExtResource("1_n4lbc")
 
-[node name="MapCamera" type="Camera2D" parent="." node_paths=PackedStringArray("map")]
-script = ExtResource("2_m1k14")
-map = NodePath("../Map")
+[node name="MapCamera" type="Camera2D" parent="."]
+
+[node name="UI" type="Control" parent="MapCamera" node_paths=PackedStringArray("map", "camera")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_k340r")
+map = NodePath("../../Map")
+camera = NodePath("..")
+
+[node name="ColorRect" type="ColorRect" parent="MapCamera/UI"]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect2" type="ColorRect" parent="MapCamera/UI"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
