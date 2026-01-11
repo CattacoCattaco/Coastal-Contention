@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="RegionData" load_steps=8 format=3 uid="uid://b7ndgjy2s3t8c"]
+
+[ext_resource type="Script" uid="uid://rakxnjbr7rll" path="res://game_scene/map/territory_data/region_data.gd" id="1_qqspp"]
+[ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="2_lcfs6"]
+[ext_resource type="Resource" uid="uid://d04d4xa51erji" path="res://game_scene/map/territory_data/territories/silver/forest.tres" id="3_5knxg"]
+[ext_resource type="Resource" uid="uid://cfqtcakxj6fp2" path="res://game_scene/map/territory_data/territories/silver/mountains.tres" id="4_mg428"]
+[ext_resource type="Resource" uid="uid://by62pbdocnkn6" path="res://game_scene/map/territory_data/territories/silver/north_plains.tres" id="5_v8b25"]
+[ext_resource type="Resource" uid="uid://d4ic2j1watigi" path="res://game_scene/map/territory_data/territories/silver/south_plains.tres" id="6_ufx6q"]
+[ext_resource type="Resource" uid="uid://cgs2aaw0ea7rb" path="res://game_scene/map/territory_data/territories/silver/swamp.tres" id="7_qclft"]
+
+[resource]
+script = ExtResource("1_qqspp")
+territories = Array[ExtResource("2_lcfs6")]([ExtResource("3_5knxg"), ExtResource("4_mg428"), ExtResource("5_v8b25"), ExtResource("6_ufx6q"), ExtResource("7_qclft")])
+region = 5
+metadata/_custom_type_script = "uid://rakxnjbr7rll"

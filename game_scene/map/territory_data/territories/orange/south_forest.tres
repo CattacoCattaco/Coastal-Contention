@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TerritoryData" load_steps=2 format=3 uid="uid://chcl35f8afmoq"]
+
+[ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_vrv0s"]
+
+[resource]
+script = ExtResource("1_vrv0s")
+biome = 2
+tiles = Array[Vector2i]([Vector2i(-16, -1), Vector2i(-16, 0), Vector2i(-15, 0), Vector2i(-15, 1), Vector2i(-15, 2), Vector2i(-14, 2)])
+metadata/_custom_type_script = "uid://ck607a5rkx4j4"

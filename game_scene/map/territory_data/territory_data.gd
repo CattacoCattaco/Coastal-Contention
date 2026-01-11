@@ -5,9 +5,11 @@ enum Biome {
 	PLAINS,
 	SWAMP,
 	FOREST,
-	MOUNTAIN,
+	MOUNTAINS,
 }
 
-@export var continent: Map.Continent = Map.Continent.ORANGE
+const Region = RegionData.Region
+
+@export var region: Region = Region.ORANGE
 @export var biome: Biome = Biome.PLAINS
 @export var tiles: Array[Vector2i]

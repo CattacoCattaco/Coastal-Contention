@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="RegionData" load_steps=11 format=3 uid="uid://b2me5aq6s2w44"]
+
+[ext_resource type="Script" uid="uid://rakxnjbr7rll" path="res://game_scene/map/territory_data/region_data.gd" id="1_00v3e"]
+[ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="2_05vk3"]
+[ext_resource type="Resource" uid="uid://bnr53dik8pamx" path="res://game_scene/map/territory_data/territories/orange/north_forest.tres" id="3_qmdln"]
+[ext_resource type="Resource" uid="uid://dslq0hvndvv16" path="res://game_scene/map/territory_data/territories/orange/east_mountains.tres" id="3_vjleh"]
+[ext_resource type="Resource" uid="uid://c5mbsqqjbtqi" path="res://game_scene/map/territory_data/territories/orange/north_swamp.tres" id="4_vjleh"]
+[ext_resource type="Resource" uid="uid://db34wsl3bn3tv" path="res://game_scene/map/territory_data/territories/orange/west_plains.tres" id="5_vr4rt"]
+[ext_resource type="Resource" uid="uid://djboor3uw1wj1" path="res://game_scene/map/territory_data/territories/orange/east_plains.tres" id="6_oab6j"]
+[ext_resource type="Resource" uid="uid://cq7sy3qf1j6cp" path="res://game_scene/map/territory_data/territories/orange/south_swamp.tres" id="7_2nu2m"]
+[ext_resource type="Resource" uid="uid://chcl35f8afmoq" path="res://game_scene/map/territory_data/territories/orange/south_forest.tres" id="7_vr4rt"]
+[ext_resource type="Resource" uid="uid://divpxf5ocuj8w" path="res://game_scene/map/territory_data/territories/orange/west_mountains.tres" id="9_oab6j"]
+
+[resource]
+script = ExtResource("1_00v3e")
+territories = Array[ExtResource("2_05vk3")]([ExtResource("3_vjleh"), ExtResource("6_oab6j"), ExtResource("3_qmdln"), ExtResource("4_vjleh"), ExtResource("7_vr4rt"), ExtResource("7_2nu2m"), ExtResource("9_oab6j"), ExtResource("5_vr4rt")])
+region = 1
+metadata/_custom_type_script = "uid://rakxnjbr7rll"

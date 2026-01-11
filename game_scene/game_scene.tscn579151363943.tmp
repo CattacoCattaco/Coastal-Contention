@@ -1,17 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7xaypxjnfy08"]
+[gd_scene load_steps=6 format=3 uid="uid://c7xaypxjnfy08"]
 
 [ext_resource type="Texture2D" uid="uid://dt68ugg1ewqjf" path="res://game_scene/map/map.png" id="1_n4lbc"]
 [ext_resource type="PackedScene" uid="uid://cqntgoxaotkhx" path="res://hex/hex.tscn" id="2_3kg8t"]
 [ext_resource type="Script" uid="uid://bis25luymf83l" path="res://game_scene/map/map.gd" id="2_k340r"]
 [ext_resource type="Script" uid="uid://b65i4u2umwejc" path="res://UI/static_ui/static_ui.gd" id="3_k340r"]
-[ext_resource type="Script" uid="uid://rakxnjbr7rll" path="res://game_scene/map/territory_data/region_data.gd" id="4_8l73x"]
-[ext_resource type="Resource" uid="uid://77tejnqhmkgh" path="res://game_scene/map/territory_data/territories/red/red_region.tres" id="5_adbct"]
-[ext_resource type="Resource" uid="uid://ofpsvkb5ob77" path="res://game_scene/map/territory_data/territories/brown/brown_region.tres" id="5_mw77h"]
-[ext_resource type="Resource" uid="uid://b2me5aq6s2w44" path="res://game_scene/map/territory_data/territories/orange/orange_region.tres" id="6_adbct"]
-[ext_resource type="Resource" uid="uid://c605n3swbs02q" path="res://game_scene/map/territory_data/territories/green/green_region.tres" id="8_cvb1i"]
-[ext_resource type="Resource" uid="uid://b0dkamxibkurr" path="res://game_scene/map/territory_data/territories/magenta/magenta_region.tres" id="9_f63yk"]
 [ext_resource type="Texture2D" uid="uid://dhsona311mvph" path="res://game_scene/map/map_territory_lines.png" id="9_mmqx0"]
-[ext_resource type="Resource" uid="uid://b7ndgjy2s3t8c" path="res://game_scene/map/territory_data/territories/silver/silver_region.tres" id="10_cvb1i"]
 
 [node name="GameScene" type="Node2D"]
 
@@ -19,7 +12,6 @@
 texture = ExtResource("1_n4lbc")
 script = ExtResource("2_k340r")
 hex_scene = ExtResource("2_3kg8t")
-regions = Array[ExtResource("4_8l73x")]([ExtResource("5_adbct"), ExtResource("6_adbct"), ExtResource("5_mw77h"), ExtResource("8_cvb1i"), ExtResource("9_f63yk"), ExtResource("10_cvb1i")])
 
 [node name="MapTerritoryLines" type="Sprite2D" parent="Map"]
 z_index = 10
