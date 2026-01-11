@@ -9,8 +9,6 @@ var troop_count: int = 0
 
 func _ready() -> void:
 	update_troop_count_label()
-	await get_tree().create_timer(2).timeout
-	add_troops(1)
 
 
 func add_troops(amount: int) -> void:

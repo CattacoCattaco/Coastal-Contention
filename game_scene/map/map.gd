@@ -21,19 +21,22 @@ var hexes: Dictionary[Vector2i, Hex] = {}
 func _ready() -> void:
 	for region in regions:
 		for territory in region.territories:
-			add_territory_silhouette(territory)
+			var territory_button: TerritoryButton = add_territory_button(territory)
+			territory_button.tiles = []
 			
 			for pos in territory.tiles:
 				add_hex(pos)
+				territory_button.tiles.append(hexes[pos])
 
 
-func add_territory_silhouette(territory: TerritoryData) -> void:
-	var silhouette := Sprite2D.new()
+func add_territory_button(territory: TerritoryData) -> TerritoryButton:
+	var territory_button := TerritoryButton.new()
 	
-	silhouette.centered = false
-	silhouette.texture = territory.silhouette
+	territory_button.texture_hover = territory.silhouette
+	territory_button.texture_pressed = territory.silhouette
+	territory_button.texture_click_mask = territory.silhouette_bitmap
 	
-	add_child(silhouette)
+	add_child(territory_button)
 	
 	var silhouette_pos := Vector2(2000, 2000)
 	
@@ -50,7 +53,9 @@ func add_territory_silhouette(territory: TerritoryData) -> void:
 	# Margin from silhouette not including the territory border
 	silhouette_pos += Vector2(1, 1)
 	
-	silhouette.position = silhouette_pos
+	territory_button.position = silhouette_pos
+	
+	return territory_button
 
 
 func add_hex(pos: Vector2i) -> void:

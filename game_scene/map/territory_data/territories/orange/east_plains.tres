@@ -1,10 +1,17 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=3 format=3 uid="uid://djboor3uw1wj1"]
+[gd_resource type="Resource" script_class="TerritoryData" load_steps=4 format=4 uid="uid://bak1m3385ounv"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_oh8pn"]
 [ext_resource type="Texture2D" uid="uid://c86k6r40ew8sk" path="res://game_scene/map/territory_data/silhouettes/orange_east_plains.png" id="2_71fb3"]
+
+[sub_resource type="BitMap" id="BitMap_71fb3"]
+data = {
+"data": PackedByteArray("AAAAAAAAAAAAAAAAAAAA/v8HAAAAAAAAAAAAAAAAAAAA8P//AAAAAAAAAAAAAAAAAAAAgP//DwAAAAAAAAAAAAAAAAAAAPj//wEAAAAAAAAAAAAAAAAAAMD//z8AAAAAAAAAAAAAAAAAAAD8//8DAAAAAAAAAAAAAAAAAADg//9/AAAAAAAAAAAAAAAAAAAA////BwAAAAAAAAAAAAAAAAAA8P///wAAAAAAAAAAAAAAAAAAgP///x8AAAAAAAAAAAAAAAAAAPj///8BAAAAAAAAAAAAAAAAAMD///8/AAAAAAAAAAAAAAAAAAD+////AwAAAAAAAAAAAAAAAADg////fwAAAAAAAAAAAAAAAAAA/////w8AAAAAAAAAAAAAAAAA8P////8AAAAA4P9/AAAAAOD///////8PAAAAAP//DwAAAAD///////9/AAAAAPj//wAAAAD4////////AwAAAID//x8AAACA////////PwAAAAD8//8DAAAA/P///////wEAAADA//8/AAAAwP///////x8AAAAA/v//BwAAAP7///////8AAAAA8P//fwAAAPD///////8HAAAAAP///w8AAAD///////9/AAAAAPj///8BAAD4////////AwAAAID///8fAACA////////PwAAAAD8////AwAA/P///////wEAAADg////PwAA4P///////w8AAAAA/v///wcAAP7///////8AAAAA8P////8AAPD///////8HAAAAAP////8PAAD/////DwAAAAD+/////////////////wAAAADw/////////////////wcAAACA/////////////////z8AAAAA+P////////////////8DAAAAwP////////////////8fAAAAAPz/////////////////AQAAAOD/////////////////DwAAAAD/////////////////fwAAAADw/////////////////wcAAACA/////////////////z8AAAAA+P////////////////8DAAAAwP////////////////8fAAAAAP7/////////////////AAAAAOD/////////////////DwAAAAD/////////////////fwAAAADw/////wAA8P///////wcAAAAA/////w8AAP///////38AAAAA4P///38AAOD///////8PAAAAAP7///8DAAD+////////AAAAAMD///8/AADA////////HwAAAAD4////AQAA+P///////wMAAACA////HwAAgP///////z8AAAAA8P///wAAAPD///////8HAAAAAP///wcAAAD///////9/AAAAAOD//38AAADg////////DwAAAAD8//8DAAAA/P///////wEAAADA//8/AAAAwP///////x8AAAAA+P//AQAAAPj///////8DAAAAgP//DwAAAID///////8/AAAAAPD//wAAAADw////////BwAAAAD+/wcAAAAA/v///////wAAAAAAAAAAAAAAAAAA/////w8AAAAAAAAAAAAAAAAA8P////8AAAAAAAAAAAAAAAAAAP7///8HAAAAAAAAAAAAAAAAAOD///8/AAAAAAAAAAAAAAAAAAD8////AwAAAAAAAAAAAAAAAACA////HwAAAAAAAAAAAAAAAAAA+P///wEAAAAAAAAAAAAAAAAAAP///w8AAAAAAAAAAAAAAAAAAPD//38AAAAAAAAAAAAAAAAAAAD+//8HAAAAAAAAAAAAAAAAAADA//8/AAAAAAAAAAAAAAAAAAAA/P//AwAAAAAAAAAAAAAAAAAAgP//HwAAAAAAAAAAAAAAAAAAAPj//wAAAAAAAAAAAAAAAAAAAAD//w8AAAAAAAAAAAAAAAAAAADg/38AAAAAAA=="),
+"size": Vector2i(148, 79)
+}
 
 [resource]
 script = ExtResource("1_oh8pn")
 tiles = Array[Vector2i]([Vector2i(-11, -1), Vector2i(-12, -1), Vector2i(-13, -1), Vector2i(-12, 0), Vector2i(-14, -2), Vector2i(-15, -2)])
 silhouette = ExtResource("2_71fb3")
+silhouette_bitmap = SubResource("BitMap_71fb3")
 metadata/_custom_type_script = "uid://ck607a5rkx4j4"
