@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=2 format=3 uid="uid://dg4c3aexjbnq3"]
+[gd_resource type="Resource" script_class="TerritoryData" load_steps=3 format=3 uid="uid://dg4c3aexjbnq3"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_wmcnc"]
+[ext_resource type="Texture2D" uid="uid://btgoxe8qbh7al" path="res://game_scene/map/territory_data/silhouettes/red_east_plains.png" id="2_uiwi1"]
 
 [resource]
 script = ExtResource("1_wmcnc")
 region = 0
 tiles = Array[Vector2i]([Vector2i(-10, -11), Vector2i(-9, -10), Vector2i(-10, -12), Vector2i(-9, -11), Vector2i(-8, -10), Vector2i(-9, -12), Vector2i(-8, -11)])
+silhouette = ExtResource("2_uiwi1")
 metadata/_custom_type_script = "uid://ck607a5rkx4j4"

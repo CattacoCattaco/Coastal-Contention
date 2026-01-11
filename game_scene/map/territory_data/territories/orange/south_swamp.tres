@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=2 format=3 uid="uid://cq7sy3qf1j6cp"]
+[gd_resource type="Resource" script_class="TerritoryData" load_steps=3 format=3 uid="uid://cq7sy3qf1j6cp"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_svs8j"]
+[ext_resource type="Texture2D" uid="uid://dw0vk8hgxa5ak" path="res://game_scene/map/territory_data/silhouettes/orange_south_swamp.png" id="2_kyh1r"]
 
 [resource]
 script = ExtResource("1_svs8j")
 biome = 1
 tiles = Array[Vector2i]([Vector2i(-14, 0), Vector2i(-14, 1), Vector2i(-13, 1), Vector2i(-13, 2), Vector2i(-12, 2), Vector2i(-12, 3), Vector2i(-11, 2)])
+silhouette = ExtResource("2_kyh1r")
 metadata/_custom_type_script = "uid://ck607a5rkx4j4"

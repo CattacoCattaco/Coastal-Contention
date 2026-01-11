@@ -1,10 +1,12 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=2 format=3 uid="uid://b6rrh0ubm3r2m"]
+[gd_resource type="Resource" script_class="TerritoryData" load_steps=3 format=3 uid="uid://6xspt65coqpn"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_2bayd"]
+[ext_resource type="Texture2D" uid="uid://bx75k6cb67ook" path="res://game_scene/map/territory_data/silhouettes/magenta_south_swamp.png" id="2_cxrcf"]
 
 [resource]
 script = ExtResource("1_2bayd")
 region = 4
 biome = 1
-tiles = Array[Vector2i]([Vector2i(16, -1), Vector2i(16, 0), Vector2i(15, -1), Vector2i(15, 0), Vector2i(14, -2), Vector2i(14, -1)])
+tiles = Array[Vector2i]([Vector2i(19, 6), Vector2i(20, 7), Vector2i(20, 6), Vector2i(21, 7), Vector2i(20, 5), Vector2i(21, 6)])
+silhouette = ExtResource("2_cxrcf")
 metadata/_custom_type_script = "uid://ck607a5rkx4j4"

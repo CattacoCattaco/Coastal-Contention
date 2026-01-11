@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=2 format=3 uid="uid://djboor3uw1wj1"]
+[gd_resource type="Resource" script_class="TerritoryData" load_steps=3 format=3 uid="uid://djboor3uw1wj1"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_oh8pn"]
+[ext_resource type="Texture2D" uid="uid://c86k6r40ew8sk" path="res://game_scene/map/territory_data/silhouettes/orange_east_plains.png" id="2_71fb3"]
 
 [resource]
 script = ExtResource("1_oh8pn")
 tiles = Array[Vector2i]([Vector2i(-11, -1), Vector2i(-12, -1), Vector2i(-13, -1), Vector2i(-12, 0), Vector2i(-14, -2), Vector2i(-15, -2)])
+silhouette = ExtResource("2_71fb3")
 metadata/_custom_type_script = "uid://ck607a5rkx4j4"

@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=2 format=3 uid="uid://divpxf5ocuj8w"]
+[gd_resource type="Resource" script_class="TerritoryData" load_steps=3 format=3 uid="uid://divpxf5ocuj8w"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_swcrf"]
+[ext_resource type="Texture2D" uid="uid://dl63n6oou5252" path="res://game_scene/map/territory_data/silhouettes/orange_west_mountains.png" id="2_ub8fq"]
 
 [resource]
 script = ExtResource("1_swcrf")
 biome = 3
 tiles = Array[Vector2i]([Vector2i(-18, 0), Vector2i(-19, 0), Vector2i(-20, 0), Vector2i(-19, -1), Vector2i(-20, -1), Vector2i(-21, -1)])
+silhouette = ExtResource("2_ub8fq")
 metadata/_custom_type_script = "uid://ck607a5rkx4j4"

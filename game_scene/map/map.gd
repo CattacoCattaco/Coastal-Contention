@@ -21,8 +21,36 @@ var hexes: Dictionary[Vector2i, Hex] = {}
 func _ready() -> void:
 	for region in regions:
 		for territory in region.territories:
+			add_territory_silhouette(territory)
+			
 			for pos in territory.tiles:
 				add_hex(pos)
+
+
+func add_territory_silhouette(territory: TerritoryData) -> void:
+	var silhouette := Sprite2D.new()
+	
+	silhouette.centered = false
+	silhouette.texture = territory.silhouette
+	
+	add_child(silhouette)
+	
+	var silhouette_pos := Vector2(2000, 2000)
+	
+	# Find the top left corner of the territory to match silhouette pos to territory
+	for hex_pos in territory.tiles:
+		var physical_pos: Vector2 = to_physical(hex_pos)
+		
+		if physical_pos.x < silhouette_pos.x:
+			silhouette_pos.x = physical_pos.x
+		
+		if physical_pos.y < silhouette_pos.y:
+			silhouette_pos.y = physical_pos.y
+	
+	# Margin from silhouette not including the territory border
+	silhouette_pos += Vector2(1, 1)
+	
+	silhouette.position = silhouette_pos
 
 
 func add_hex(pos: Vector2i) -> void:

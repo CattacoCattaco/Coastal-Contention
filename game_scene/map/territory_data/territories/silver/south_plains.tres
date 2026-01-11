@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=2 format=3 uid="uid://d4ic2j1watigi"]
+[gd_resource type="Resource" script_class="TerritoryData" load_steps=3 format=3 uid="uid://d4ic2j1watigi"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_hanfy"]
+[ext_resource type="Texture2D" uid="uid://dv3j20ff5qqad" path="res://game_scene/map/territory_data/silhouettes/silver_south_plains.png" id="2_4qrjb"]
 
 [resource]
 script = ExtResource("1_hanfy")
 region = 5
 tiles = Array[Vector2i]([Vector2i(18, 17), Vector2i(19, 17), Vector2i(20, 17), Vector2i(17, 16), Vector2i(18, 16), Vector2i(17, 15)])
+silhouette = ExtResource("2_4qrjb")
 metadata/_custom_type_script = "uid://ck607a5rkx4j4"

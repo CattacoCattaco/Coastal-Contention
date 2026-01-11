@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=2 format=3 uid="uid://bnr53dik8pamx"]
+[gd_resource type="Resource" script_class="TerritoryData" load_steps=3 format=3 uid="uid://bnr53dik8pamx"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_07v71"]
+[ext_resource type="Texture2D" uid="uid://de0dop1aryrdd" path="res://game_scene/map/territory_data/silhouettes/orange_north_forest.png" id="2_mj02c"]
 
 [resource]
 script = ExtResource("1_07v71")
 biome = 2
 tiles = Array[Vector2i]([Vector2i(-14, -3), Vector2i(-13, -3), Vector2i(-12, -3), Vector2i(-13, -2), Vector2i(-12, -2), Vector2i(-11, -2)])
+silhouette = ExtResource("2_mj02c")
 metadata/_custom_type_script = "uid://ck607a5rkx4j4"

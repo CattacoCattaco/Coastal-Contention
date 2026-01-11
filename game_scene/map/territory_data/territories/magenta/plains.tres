@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=2 format=3 uid="uid://cevnt8cyxsodb"]
+[gd_resource type="Resource" script_class="TerritoryData" load_steps=3 format=3 uid="uid://cevnt8cyxsodb"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_yye2y"]
+[ext_resource type="Texture2D" uid="uid://cxbfyun24js0d" path="res://game_scene/map/territory_data/silhouettes/magenta_plains.png" id="2_x284j"]
 
 [resource]
 script = ExtResource("1_yye2y")
 region = 4
 tiles = Array[Vector2i]([Vector2i(16, 4), Vector2i(15, 2), Vector2i(15, 3), Vector2i(15, 4), Vector2i(14, 2), Vector2i(14, 3), Vector2i(13, 1), Vector2i(12, 0)])
+silhouette = ExtResource("2_x284j")
 metadata/_custom_type_script = "uid://ck607a5rkx4j4"

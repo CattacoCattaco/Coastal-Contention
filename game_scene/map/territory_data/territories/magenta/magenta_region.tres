@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="2_sfjnf"]
 [ext_resource type="Resource" uid="uid://bcjhc4haongjv" path="res://game_scene/map/territory_data/territories/magenta/forest.tres" id="3_e8ahd"]
 [ext_resource type="Resource" uid="uid://blndbieeqinok" path="res://game_scene/map/territory_data/territories/magenta/mountains.tres" id="4_8ascb"]
-[ext_resource type="Resource" uid="uid://6xspt65coqpn" path="res://game_scene/map/territory_data/territories/magenta/north_swamp.tres" id="5_hhlsg"]
+[ext_resource type="Resource" uid="uid://6xspt65coqpn" path="res://game_scene/map/territory_data/territories/magenta/south_swamp.tres" id="5_hhlsg"]
 [ext_resource type="Resource" uid="uid://cevnt8cyxsodb" path="res://game_scene/map/territory_data/territories/magenta/plains.tres" id="6_mripa"]
-[ext_resource type="Resource" uid="uid://b6rrh0ubm3r2m" path="res://game_scene/map/territory_data/territories/magenta/south_swamp.tres" id="7_ckp4v"]
+[ext_resource type="Resource" uid="uid://b6rrh0ubm3r2m" path="res://game_scene/map/territory_data/territories/magenta/north_swamp.tres" id="7_ckp4v"]
 
 [resource]
 script = ExtResource("1_qq2ph")
