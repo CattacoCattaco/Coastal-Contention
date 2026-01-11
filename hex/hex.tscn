@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqntgoxaotkhx"]
+
+[ext_resource type="Texture2D" uid="uid://c6j7u2rnankja" path="res://hex/hex.png" id="1_4b57h"]
+[ext_resource type="Script" uid="uid://c6mle7uplx1gs" path="res://hex/hex.gd" id="2_p2rld"]
+[ext_resource type="Texture2D" uid="uid://cjj3yenv8bn5" path="res://hex/piece/troop/pirate.png" id="2_xms1r"]
+[ext_resource type="FontFile" uid="uid://bf5vht50fqa6n" path="res://UI/pixel_font_6px.ttf" id="3_ywapo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p2rld"]
+font = ExtResource("3_ywapo")
+font_size = 6
+font_color = Color(0.03529412, 0.039215688, 0.078431375, 1)
+
+[node name="Hex" type="Sprite2D" node_paths=PackedStringArray("troop_sprite", "troop_count_label")]
+texture = ExtResource("1_4b57h")
+centered = false
+script = ExtResource("2_p2rld")
+troop_sprite = NodePath("Troop")
+troop_count_label = NodePath("TroopCountLabel")
+
+[node name="Troop" type="Sprite2D" parent="."]
+position = Vector2(12, 2)
+texture = ExtResource("2_xms1r")
+centered = false
+
+[node name="TroopCountLabel" type="Label" parent="."]
+offset_left = 12.0
+offset_top = 25.0
+offset_right = 27.0
+offset_bottom = 31.0
+text = "100"
+label_settings = SubResource("LabelSettings_p2rld")
+horizontal_alignment = 1
