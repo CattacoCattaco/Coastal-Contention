@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BorderSet" load_steps=7 format=3 uid="uid://b2uwx2d4r1p1l"]
+
+[ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_hj68g"]
+[ext_resource type="Resource" uid="uid://cnwmdcmvfo44p" path="res://game_scene/map/territory_data/territories/magenta/north_swamp.tres" id="2_t20ci"]
+[ext_resource type="Resource" uid="uid://b4hl2d58panen" path="res://game_scene/map/territory_data/territories/magenta/plains.tres" id="3_c6k16"]
+[ext_resource type="Resource" uid="uid://b5a8kf8ex42iu" path="res://game_scene/map/territory_data/territories/magenta/south_swamp.tres" id="4_xcyhv"]
+[ext_resource type="Resource" uid="uid://bw33rsjqqc8n1" path="res://game_scene/map/territory_data/territories/magenta/mountains.tres" id="6_hj68g"]
+[ext_resource type="Script" uid="uid://ckn1oykjvgf2j" path="res://game_scene/map/territory_data/borders/border_set.gd" id="6_nic0q"]
+
+[resource]
+script = ExtResource("6_nic0q")
+source = ExtResource("6_hj68g")
+connections = Array[ExtResource("1_hj68g")]([ExtResource("2_t20ci"), ExtResource("3_c6k16"), ExtResource("4_xcyhv")])
+metadata/_custom_type_script = "uid://ckn1oykjvgf2j"

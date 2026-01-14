@@ -24,3 +24,11 @@ func _button_up() -> void:
 
 func _pressed() -> void:
 	tiles[0].add_troops(1)
+
+
+func add_troops(amount: int) -> void:
+	tiles[0].add_troops(amount)
+
+
+func get_troop_count() -> int:
+	return tiles[0].troop_count

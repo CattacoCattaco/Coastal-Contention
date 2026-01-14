@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="BorderSet" load_steps=6 format=3 uid="uid://db3fcg8jnm2e3"]
+
+[ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_qbupn"]
+[ext_resource type="Resource" uid="uid://uxpyvotcn3dj" path="res://game_scene/map/territory_data/territories/silver/forest.tres" id="2_air7o"]
+[ext_resource type="Script" uid="uid://ckn1oykjvgf2j" path="res://game_scene/map/territory_data/borders/border_set.gd" id="3_eyaee"]
+[ext_resource type="Resource" uid="uid://b5a8kf8ex42iu" path="res://game_scene/map/territory_data/territories/magenta/south_swamp.tres" id="3_jbv67"]
+[ext_resource type="Resource" uid="uid://l5q4eqct70jk" path="res://game_scene/map/territory_data/territories/silver/north_plains.tres" id="5_r5gcq"]
+
+[resource]
+script = ExtResource("3_eyaee")
+source = ExtResource("5_r5gcq")
+connections = Array[ExtResource("1_qbupn")]([ExtResource("2_air7o"), ExtResource("3_jbv67")])
+metadata/_custom_type_script = "uid://ckn1oykjvgf2j"

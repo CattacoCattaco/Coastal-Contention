@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BorderSet" load_steps=9 format=3 uid="uid://dmf5x5jclsp7x"]
+
+[ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_tpuwg"]
+[ext_resource type="Resource" uid="uid://d228ne4ikroaf" path="res://game_scene/map/territory_data/territories/brown/north_forest.tres" id="2_ct1qd"]
+[ext_resource type="Resource" uid="uid://bkeo1pijd3mb8" path="res://game_scene/map/territory_data/territories/brown/west_swamp.tres" id="2_tixpf"]
+[ext_resource type="Resource" uid="uid://cp3esra1ax1cv" path="res://game_scene/map/territory_data/territories/brown/mountains.tres" id="3_ct1qd"]
+[ext_resource type="Resource" uid="uid://cencrd551reta" path="res://game_scene/map/territory_data/territories/brown/south_forest.tres" id="4_ywjic"]
+[ext_resource type="Script" uid="uid://ckn1oykjvgf2j" path="res://game_scene/map/territory_data/borders/border_set.gd" id="5_l3t24"]
+[ext_resource type="Resource" uid="uid://cvrc2kmx16t2e" path="res://game_scene/map/territory_data/territories/brown/plains.tres" id="5_swda0"]
+[ext_resource type="Resource" uid="uid://c40rfw43bpxws" path="res://game_scene/map/territory_data/territories/red/east_plains.tres" id="6_vxx4w"]
+
+[resource]
+script = ExtResource("5_l3t24")
+source = ExtResource("2_tixpf")
+connections = Array[ExtResource("1_tpuwg")]([ExtResource("2_ct1qd"), ExtResource("3_ct1qd"), ExtResource("4_ywjic"), ExtResource("5_swda0"), ExtResource("6_vxx4w")])
+metadata/_custom_type_script = "uid://ckn1oykjvgf2j"

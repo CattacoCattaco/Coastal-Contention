@@ -16,6 +16,7 @@ const UP_RIGHT := Vector2i(1, 0)
 @export var hex_size := Vector2(38, 33)
 
 var hexes: Dictionary[Vector2i, Hex] = {}
+var territories: Array[TerritoryButton] = []
 
 
 func _ready() -> void:
@@ -27,6 +28,9 @@ func _ready() -> void:
 			for pos in territory.tiles:
 				add_hex(pos)
 				territory_button.tiles.append(hexes[pos])
+			
+			if region.region == RegionData.Region.RED:
+				territory_button.add_troops(2)
 
 
 func add_territory_button(territory: TerritoryData) -> TerritoryButton:
