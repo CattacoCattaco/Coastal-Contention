@@ -1,6 +1,11 @@
 class_name Map
 extends Sprite2D
 
+enum Action {
+	NONE,
+	RECRUIT,
+}
+
 const UP := Vector2i(0, -1)
 const UP_LEFT := Vector2i(-1, -1)
 const DOWN_LEFT := Vector2i(-1, 0)
@@ -9,8 +14,10 @@ const DOWN_RIGHT := Vector2i(1, 1)
 const UP_RIGHT := Vector2i(1, 0)
 
 @export var hex_scene: PackedScene
+@export var territory_shader: Shader
 
 @export var regions: Array[RegionData]
+@export var action_buttons: Array[Button]
 
 @export var hex_position_offset := Vector2(-19, -32)
 @export var hex_size := Vector2(38, 33)
@@ -18,11 +25,16 @@ const UP_RIGHT := Vector2i(1, 0)
 var hexes: Dictionary[Vector2i, Hex] = {}
 var territories: Array[TerritoryButton] = []
 
+var current_action: Action = Action.NONE
+
 
 func _ready() -> void:
 	for region in regions:
-		for territory in region.territories:
-			var territory_button: TerritoryButton = add_territory_button(territory)
+		for i in len(region.borders):
+			var borders: BorderSet = region.borders[i]
+			var territory: TerritoryData = borders.source
+			
+			var territory_button: TerritoryButton = add_territory_button(borders)
 			territory_button.tiles = []
 			
 			for pos in territory.tiles:
@@ -31,15 +43,25 @@ func _ready() -> void:
 			
 			if region.region == RegionData.Region.RED:
 				territory_button.add_troops(2)
+	
+	action_buttons[Action.NONE].pressed.connect(clear_action)
+	action_buttons[Action.RECRUIT].pressed.connect(enter_recruit_mode)
 
 
-func add_territory_button(territory: TerritoryData) -> TerritoryButton:
+func add_territory_button(borders: BorderSet) -> TerritoryButton:
+	var territory: TerritoryData = borders.source
+	
 	var territory_button := TerritoryButton.new()
 	
-	territory_button.texture_hover = territory.silhouette
-	territory_button.texture_pressed = territory.silhouette
-	territory_button.texture_click_mask = territory.silhouette_bitmap
+	territory_button.map = self
+	territory_button.territory = territory
+	territory_button.borders = borders
 	
+	var territory_button_material := ShaderMaterial.new()
+	territory_button_material.shader = territory_shader
+	territory_button.material = territory_button_material
+	
+	territories.append(territory_button)
 	add_child(territory_button)
 	
 	var silhouette_pos := Vector2(2000, 2000)
@@ -64,7 +86,6 @@ func add_territory_button(territory: TerritoryData) -> TerritoryButton:
 
 func add_hex(pos: Vector2i) -> void:
 	var hex: Hex = hex_scene.instantiate()
-	"res://game_scene/map/territory_data/territories/red/forest.tres"
 	
 	hexes[pos] = hex
 	add_child(hex)
@@ -79,3 +100,17 @@ func to_physical(pos: Vector2i) -> Vector2:
 	physical += Vector2(floori(hex_size.x * 3 / 4), -floori(hex_size.y / 2)) * pos.x
 	
 	return physical
+
+
+func clear_action() -> void:
+	current_action = Action.NONE
+	for territory in territories:
+		territory.clear_action_state()
+
+
+func enter_recruit_mode() -> void:
+	current_action = Action.RECRUIT
+	
+	for territory in territories:
+		if territory.get_troop_count() > 0:
+			territory.enter_recruit_mode()

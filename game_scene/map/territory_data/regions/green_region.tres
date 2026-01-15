@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="RegionData" load_steps=14 format=3 uid="uid://c605n3swbs02q"]
+
+[ext_resource type="Script" uid="uid://rakxnjbr7rll" path="res://game_scene/map/territory_data/region_data.gd" id="1_ernwk"]
+[ext_resource type="Script" uid="uid://ckn1oykjvgf2j" path="res://game_scene/map/territory_data/borders/border_set.gd" id="1_q7ncl"]
+[ext_resource type="Resource" uid="uid://damlevt4k5ju" path="res://game_scene/map/territory_data/borders/green/mountains.tres" id="2_gtk2w"]
+[ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="2_lvxog"]
+[ext_resource type="Resource" uid="uid://dyl5v26lmot6m" path="res://game_scene/map/territory_data/borders/green/north_forest.tres" id="3_ic8s0"]
+[ext_resource type="Resource" uid="uid://c154qwq2nh7o3" path="res://game_scene/map/territory_data/territories/green/mountains.tres" id="3_j3l4o"]
+[ext_resource type="Resource" uid="uid://bs78c8o3iqm61" path="res://game_scene/map/territory_data/territories/green/north_forest.tres" id="3_rmy7d"]
+[ext_resource type="Resource" uid="uid://tp08kehjojvq" path="res://game_scene/map/territory_data/borders/green/plains.tres" id="4_0oabj"]
+[ext_resource type="Resource" uid="uid://bdk54fwf3x8fw" path="res://game_scene/map/territory_data/territories/green/swamp.tres" id="4_dgjsd"]
+[ext_resource type="Resource" uid="uid://b7g5am112y7vi" path="res://game_scene/map/territory_data/territories/green/plains.tres" id="5_jcl1d"]
+[ext_resource type="Resource" uid="uid://0h5i65k8ymr" path="res://game_scene/map/territory_data/borders/green/south_forest.tres" id="5_thgve"]
+[ext_resource type="Resource" uid="uid://otdixhtolok" path="res://game_scene/map/territory_data/borders/green/swamp.tres" id="6_1alsx"]
+[ext_resource type="Resource" uid="uid://dpk6yua48kyt3" path="res://game_scene/map/territory_data/territories/green/south_forest.tres" id="6_48dld"]
+
+[resource]
+script = ExtResource("1_ernwk")
+territories = Array[ExtResource("2_lvxog")]([ExtResource("3_j3l4o"), ExtResource("3_rmy7d"), ExtResource("5_jcl1d"), ExtResource("6_48dld"), ExtResource("4_dgjsd")])
+borders = Array[ExtResource("1_q7ncl")]([ExtResource("2_gtk2w"), ExtResource("3_ic8s0"), ExtResource("4_0oabj"), ExtResource("5_thgve"), ExtResource("6_1alsx")])
+region = 3
+metadata/_custom_type_script = "uid://rakxnjbr7rll"

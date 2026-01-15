@@ -11,5 +11,5 @@ enum Region {
 	SILVER,
 }
 
-@export var territories: Array[TerritoryData]
+@export var borders: Array[BorderSet]
 @export var region: Region = Region.RED
