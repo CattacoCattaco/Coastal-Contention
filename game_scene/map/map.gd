@@ -1,12 +1,6 @@
 class_name Map
 extends Sprite2D
 
-enum Action {
-	NONE,
-	RECRUIT,
-	MOVE,
-}
-
 const UP := Vector2i(0, -1)
 const UP_LEFT := Vector2i(-1, -1)
 const DOWN_LEFT := Vector2i(-1, 0)
@@ -17,21 +11,15 @@ const UP_RIGHT := Vector2i(1, 0)
 @export var hex_scene: PackedScene
 @export var territory_shader: Shader
 
+@export var actions_bar: ActionsBar
+
 @export var regions: Array[RegionData]
-@export var action_buttons: Array[Button]
 
 @export var hex_position_offset := Vector2(-19, -32)
 @export var hex_size := Vector2(38, 33)
 
-@export var troop_count_panel: PanelContainer
-@export var troop_count_spin_box: SpinBox
-@export var troop_count_submit_button: Button
-
 var hexes: Dictionary[Vector2i, Hex] = {}
 var territories: Array[TerritoryButton] = []
-
-var current_action: Action = Action.NONE
-var move_source: TerritoryButton
 
 
 func _ready() -> void:
@@ -49,12 +37,6 @@ func _ready() -> void:
 			
 			if region.region == RegionData.Region.RED:
 				territory_button.add_troops(2)
-	
-	action_buttons[Action.NONE].pressed.connect(clear_action)
-	action_buttons[Action.RECRUIT].pressed.connect(enter_recruit_mode)
-	action_buttons[Action.MOVE].pressed.connect(enter_move_mode)
-	
-	troop_count_panel.hide()
 
 
 func add_territory_button(borders: BorderSet) -> TerritoryButton:
@@ -109,26 +91,3 @@ func to_physical(pos: Vector2i) -> Vector2:
 	physical += Vector2(floori(hex_size.x * 3 / 4), -floori(hex_size.y / 2)) * pos.x
 	
 	return physical
-
-
-func clear_action() -> void:
-	current_action = Action.NONE
-	for territory in territories:
-		territory.clear_action_state()
-	troop_count_panel.hide()
-
-
-func enter_recruit_mode() -> void:
-	current_action = Action.RECRUIT
-	
-	for territory in territories:
-		if territory.get_troop_count() > 0:
-			territory.enter_recruit_mode()
-
-
-func enter_move_mode() -> void:
-	current_action = Action.MOVE
-	
-	for territory in territories:
-		if territory.get_troop_count() > 0:
-			territory.enter_move_source_mode()

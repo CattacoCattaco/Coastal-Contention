@@ -9,6 +9,7 @@ enum ActionState {
 }
 
 var map: Map
+var actions_bar: ActionsBar
 var tiles: Array[Hex]
 var territory: TerritoryData
 var borders: BorderSet
@@ -20,6 +21,8 @@ var current_action_state: ActionState = ActionState.NONE
 
 
 func _ready() -> void:
+	actions_bar = map.actions_bar
+	
 	disabled = true
 	
 	button_down.connect(_button_down)
@@ -109,11 +112,11 @@ func _pressed() -> void:
 	match current_action_state:
 		ActionState.RECRUIT:
 			add_troops(1)
-			map.clear_action()
+			actions_bar.clear_action()
 		ActionState.MOVE_SOURCE:
-			map.clear_action()
-			map.current_action = Map.Action.MOVE
-			map.move_source = self
+			actions_bar.clear_action()
+			actions_bar.current_action = ActionsBar.Action.MOVE
+			actions_bar.move_source = self
 			
 			for territory_button in map.territories:
 				if territory_button.territory not in borders.connections:
@@ -121,29 +124,34 @@ func _pressed() -> void:
 				
 				territory_button.enter_move_end_mode()
 		ActionState.MOVE_END:
-			map.clear_action()
-			map.current_action = Map.Action.MOVE
-			map.troop_count_panel.show()
+			actions_bar.clear_action()
+			actions_bar.current_action = ActionsBar.Action.MOVE
+			actions_bar.troop_count_panel.show()
 			
-			map.troop_count_spin_box.min_value = 1
-			map.troop_count_spin_box.max_value = map.move_source.get_troop_count()
-			map.troop_count_spin_box.value = 1
+			var move_source: TerritoryButton = actions_bar.move_source
 			
-			var submit_button: Button = map.troop_count_submit_button
-			for connection in map.troop_count_submit_button.pressed.get_connections():
+			actions_bar.troop_count_spin_box.min_value = 1
+			actions_bar.troop_count_spin_box.max_value = move_source.get_troop_count()
+			actions_bar.troop_count_spin_box.value = 1
+			
+			var submit_button: Button = actions_bar.troop_count_submit_button
+			for connection in submit_button.pressed.get_connections():
 				submit_button.pressed.disconnect(connection["callable"])
 			
-			submit_button.pressed.connect(map.move_source.move_from_troop_count_panel.bind(self))
+			submit_button.pressed.connect(move_source.move_from_troop_count_panel.bind(self))
 
 
+## Move troops from this territory to [param to] in an amount based on the
+## value of the troop count panel's spin box.
 func move_from_troop_count_panel(to: TerritoryButton) -> void:
-	var amount: int = roundi(map.troop_count_spin_box.value)
+	var amount: int = roundi(actions_bar.troop_count_spin_box.value)
 	
 	move_troops(amount, to)
 	
-	map.clear_action()
+	actions_bar.clear_action()
 
 
+## Move [param amount] troops to [to]
 func move_troops(amount: int, to: TerritoryButton) -> void:
 	add_troops(-amount)
 	to.add_troops(amount)
