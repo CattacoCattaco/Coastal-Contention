@@ -4,6 +4,8 @@ extends TextureButton
 enum ActionState {
 	NONE,
 	RECRUIT,
+	MOVE_SOURCE,
+	MOVE_END,
 }
 
 var map: Map
@@ -86,6 +88,18 @@ func enter_recruit_mode() -> void:
 	set_border(Color("75a743"))
 
 
+func enter_move_source_mode() -> void:
+	disabled = false
+	current_action_state = ActionState.MOVE_SOURCE
+	set_border(Color("73bed3"))
+
+
+func enter_move_end_mode() -> void:
+	disabled = false
+	current_action_state = ActionState.MOVE_END
+	set_border(Color("73bed3"))
+
+
 func set_border(color: Color) -> void:
 	var shader_material: ShaderMaterial = material
 	shader_material.set_shader_parameter("outline_color", color)
@@ -96,6 +110,43 @@ func _pressed() -> void:
 		ActionState.RECRUIT:
 			add_troops(1)
 			map.clear_action()
+		ActionState.MOVE_SOURCE:
+			map.clear_action()
+			map.current_action = Map.Action.MOVE
+			map.move_source = self
+			
+			for territory_button in map.territories:
+				if territory_button.territory not in borders.connections:
+					continue
+				
+				territory_button.enter_move_end_mode()
+		ActionState.MOVE_END:
+			map.clear_action()
+			map.current_action = Map.Action.MOVE
+			map.troop_count_panel.show()
+			
+			map.troop_count_spin_box.min_value = 1
+			map.troop_count_spin_box.max_value = map.move_source.get_troop_count()
+			map.troop_count_spin_box.value = 1
+			
+			var submit_button: Button = map.troop_count_submit_button
+			for connection in map.troop_count_submit_button.pressed.get_connections():
+				submit_button.pressed.disconnect(connection["callable"])
+			
+			submit_button.pressed.connect(map.move_source.move_from_troop_count_panel.bind(self))
+
+
+func move_from_troop_count_panel(to: TerritoryButton) -> void:
+	var amount: int = roundi(map.troop_count_spin_box.value)
+	
+	move_troops(amount, to)
+	
+	map.clear_action()
+
+
+func move_troops(amount: int, to: TerritoryButton) -> void:
+	add_troops(-amount)
+	to.add_troops(amount)
 
 
 func add_troops(amount: int) -> void:

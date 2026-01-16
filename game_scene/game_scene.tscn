@@ -49,13 +49,63 @@ text = "Cancel"
 layout_mode = 2
 text = "Recruit"
 
-[node name="Map" type="Sprite2D" parent="." node_paths=PackedStringArray("action_buttons")]
+[node name="MoveButton" type="Button" parent="MapCamera/UI/ActionsBar"]
+layout_mode = 2
+text = "Move"
+
+[node name="TroopCountPanel" type="PanelContainer" parent="MapCamera/UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MapCamera/UI/TroopCountPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MapCamera/UI/TroopCountPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="MapCamera/UI/TroopCountPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Troops to move:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MapCamera/UI/TroopCountPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TroopCountSpinBox" type="SpinBox" parent="MapCamera/UI/TroopCountPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+rounded = true
+
+[node name="SubmitButton" type="Button" parent="MapCamera/UI/TroopCountPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+text = "Submit"
+
+[node name="Map" type="Sprite2D" parent="." node_paths=PackedStringArray("action_buttons", "troop_count_panel", "troop_count_spin_box", "troop_count_submit_button")]
 texture = ExtResource("1_n4lbc")
 script = ExtResource("2_k340r")
 hex_scene = ExtResource("2_3kg8t")
 territory_shader = ExtResource("13_wohtb")
 regions = Array[ExtResource("4_8l73x")]([ExtResource("5_adbct"), ExtResource("6_adbct"), ExtResource("5_mw77h"), ExtResource("8_cvb1i"), ExtResource("9_f63yk"), ExtResource("10_cvb1i")])
-action_buttons = [NodePath("../MapCamera/UI/ActionsBar/CancelButton"), NodePath("../MapCamera/UI/ActionsBar/RecruitButton")]
+action_buttons = [NodePath("../MapCamera/UI/ActionsBar/CancelButton"), NodePath("../MapCamera/UI/ActionsBar/RecruitButton"), NodePath("../MapCamera/UI/ActionsBar/MoveButton")]
+troop_count_panel = NodePath("../MapCamera/UI/TroopCountPanel")
+troop_count_spin_box = NodePath("../MapCamera/UI/TroopCountPanel/MarginContainer/VBoxContainer/VBoxContainer/TroopCountSpinBox")
+troop_count_submit_button = NodePath("../MapCamera/UI/TroopCountPanel/MarginContainer/VBoxContainer/VBoxContainer/SubmitButton")
 
 [node name="MapTerritoryLines" type="Sprite2D" parent="Map"]
 z_index = 10
