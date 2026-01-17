@@ -36,7 +36,7 @@ script = ExtResource("3_k340r")
 map = NodePath("../../Map")
 camera = NodePath("..")
 
-[node name="ActionsBar" type="VBoxContainer" parent="MapCamera/UI" node_paths=PackedStringArray("map", "turn_order_bar", "action_buttons", "troop_count_panel", "troop_count_spin_box", "troop_count_submit_button")]
+[node name="ActionsBar" type="VBoxContainer" parent="MapCamera/UI" node_paths=PackedStringArray("map", "action_buttons", "troop_count_panel", "troop_count_spin_box", "troop_count_submit_button")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -46,8 +46,7 @@ offset_bottom = 40.0
 grow_horizontal = 0
 script = ExtResource("2_f63yk")
 map = NodePath("../../../Map")
-turn_order_bar = NodePath("../TurnOrderBar")
-action_buttons = [NodePath("CancelButton"), NodePath("RecruitButton"), NodePath("MoveButton"), NodePath("PassButton")]
+action_buttons = [NodePath("CancelButton"), NodePath("RecruitButton"), NodePath("MoveButton")]
 troop_count_panel = NodePath("../TroopCountPanel")
 troop_count_spin_box = NodePath("../TroopCountPanel/MarginContainer/VBoxContainer/VBoxContainer/TroopCountSpinBox")
 troop_count_submit_button = NodePath("../TroopCountPanel/MarginContainer/VBoxContainer/VBoxContainer/SubmitButton")
@@ -63,10 +62,6 @@ text = "Recruit"
 [node name="MoveButton" type="Button" parent="MapCamera/UI/ActionsBar"]
 layout_mode = 2
 text = "Move"
-
-[node name="PassButton" type="Button" parent="MapCamera/UI/ActionsBar"]
-layout_mode = 2
-text = "Pass"
 
 [node name="TurnOrderBar" type="VBoxContainer" parent="MapCamera/UI"]
 custom_minimum_size = Vector2(40, 40)
@@ -123,13 +118,12 @@ rounded = true
 layout_mode = 2
 text = "Submit"
 
-[node name="Map" type="Sprite2D" parent="." node_paths=PackedStringArray("actions_bar", "turn_order_bar")]
+[node name="Map" type="Sprite2D" parent="." node_paths=PackedStringArray("actions_bar")]
 texture = ExtResource("1_n4lbc")
 script = ExtResource("2_k340r")
 hex_scene = ExtResource("2_3kg8t")
 territory_shader = ExtResource("13_wohtb")
 actions_bar = NodePath("../MapCamera/UI/ActionsBar")
-turn_order_bar = NodePath("../MapCamera/UI/TurnOrderBar")
 regions = Array[ExtResource("4_8l73x")]([ExtResource("5_adbct"), ExtResource("6_adbct"), ExtResource("5_mw77h"), ExtResource("8_cvb1i"), ExtResource("9_f63yk"), ExtResource("10_cvb1i")])
 
 [node name="MapTerritoryLines" type="Sprite2D" parent="Map"]

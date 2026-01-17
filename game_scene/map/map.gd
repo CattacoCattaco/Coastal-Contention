@@ -1,6 +1,8 @@
 class_name Map
 extends Sprite2D
 
+const Faction = TurnOrderBar.Faction
+
 const UP := Vector2i(0, -1)
 const UP_LEFT := Vector2i(-1, -1)
 const DOWN_LEFT := Vector2i(-1, 0)
@@ -12,6 +14,7 @@ const UP_RIGHT := Vector2i(1, 0)
 @export var territory_shader: Shader
 
 @export var actions_bar: ActionsBar
+@export var turn_order_bar: TurnOrderBar
 
 @export var regions: Array[RegionData]
 
@@ -36,7 +39,9 @@ func _ready() -> void:
 				territory_button.tiles.append(hexes[pos])
 			
 			if region.region == RegionData.Region.RED:
-				territory_button.add_troops(2)
+				territory_button.add_troops(2, Faction.PIRATES)
+			elif region.region == RegionData.Region.MAGENTA:
+				territory_button.add_troops(2, Faction.MYCOLINGS)
 
 
 func add_territory_button(borders: BorderSet) -> TerritoryButton:
@@ -45,6 +50,7 @@ func add_territory_button(borders: BorderSet) -> TerritoryButton:
 	var territory_button := TerritoryButton.new()
 	
 	territory_button.map = self
+	
 	territory_button.territory = territory
 	territory_button.borders = borders
 	

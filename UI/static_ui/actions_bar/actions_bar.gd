@@ -5,9 +5,13 @@ enum Action {
 	NONE,
 	RECRUIT,
 	MOVE,
+	PASS,
 }
 
+const Faction = TurnOrderBar.Faction
+
 @export var map: Map
+@export var turn_order_bar: TurnOrderBar
 
 @export var action_buttons: Array[Button]
 
@@ -23,6 +27,7 @@ func _ready() -> void:
 	action_buttons[Action.NONE].pressed.connect(clear_action)
 	action_buttons[Action.RECRUIT].pressed.connect(enter_recruit_mode)
 	action_buttons[Action.MOVE].pressed.connect(enter_move_mode)
+	action_buttons[Action.PASS].pressed.connect(pass_turn)
 	
 	clear_action()
 
@@ -41,7 +46,7 @@ func enter_recruit_mode() -> void:
 	current_action = Action.RECRUIT
 	
 	for territory in map.territories:
-		if territory.get_troop_count() > 0:
+		if territory.get_troop_count(turn_order_bar.turn_order[0]) > 0:
 			territory.enter_recruit_mode()
 
 
@@ -51,5 +56,10 @@ func enter_move_mode() -> void:
 	current_action = Action.MOVE
 	
 	for territory in map.territories:
-		if territory.get_troop_count() > 0:
+		if territory.get_troop_count(turn_order_bar.turn_order[0]) > 0:
 			territory.enter_move_source_mode()
+
+
+func pass_turn() -> void:
+	clear_action()
+	turn_order_bar.next_turn()

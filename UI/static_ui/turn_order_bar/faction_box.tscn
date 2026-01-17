@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkudqtv54b63a"]
+
+[ext_resource type="Script" uid="uid://c8gcr3ajsx8d4" path="res://UI/static_ui/turn_order_bar/faction_box.gd" id="1_pp31g"]
+[ext_resource type="FontFile" uid="uid://bf5vht50fqa6n" path="res://UI/pixel_font_6px.ttf" id="2_6122u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pp31g"]
+font = ExtResource("2_6122u")
+font_size = 12
+
+[node name="FactionBox" type="ColorRect" node_paths=PackedStringArray("name_label")]
+custom_minimum_size = Vector2(150, 32)
+color = Color(0.64705884, 0.1882353, 0.1882353, 1)
+script = ExtResource("1_pp31g")
+name_label = NodePath("NameLabel")
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_top = 10.0
+grow_horizontal = 2
+label_settings = SubResource("LabelSettings_pp31g")

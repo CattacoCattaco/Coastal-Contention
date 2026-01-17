@@ -8,7 +8,10 @@ enum ActionState {
 	MOVE_END,
 }
 
+const Faction = TurnOrderBar.Faction
+
 var map: Map
+var turn_order_bar: TurnOrderBar
 var actions_bar: ActionsBar
 var tiles: Array[Hex]
 var territory: TerritoryData
@@ -21,6 +24,7 @@ var current_action_state: ActionState = ActionState.NONE
 
 
 func _ready() -> void:
+	turn_order_bar = map.turn_order_bar
 	actions_bar = map.actions_bar
 	
 	disabled = true
@@ -109,9 +113,11 @@ func set_border(color: Color) -> void:
 
 
 func _pressed() -> void:
+	var faction: Faction = turn_order_bar.turn_order[0]
+	
 	match current_action_state:
 		ActionState.RECRUIT:
-			add_troops(1)
+			add_troops(1, faction)
 			actions_bar.clear_action()
 		ActionState.MOVE_SOURCE:
 			actions_bar.clear_action()
@@ -131,35 +137,44 @@ func _pressed() -> void:
 			var move_source: TerritoryButton = actions_bar.move_source
 			
 			actions_bar.troop_count_spin_box.min_value = 1
-			actions_bar.troop_count_spin_box.max_value = move_source.get_troop_count()
+			actions_bar.troop_count_spin_box.max_value = move_source.get_troop_count(faction)
 			actions_bar.troop_count_spin_box.value = 1
 			
 			var submit_button: Button = actions_bar.troop_count_submit_button
 			for connection in submit_button.pressed.get_connections():
 				submit_button.pressed.disconnect(connection["callable"])
 			
-			submit_button.pressed.connect(move_source.move_from_troop_count_panel.bind(self))
+			submit_button.pressed.connect(
+					move_source.move_from_troop_count_panel.bind(self, faction))
 
 
 ## Move troops from this territory to [param to] in an amount based on the
 ## value of the troop count panel's spin box.
-func move_from_troop_count_panel(to: TerritoryButton) -> void:
+func move_from_troop_count_panel(to: TerritoryButton, faction: Faction) -> void:
 	var amount: int = roundi(actions_bar.troop_count_spin_box.value)
 	
-	move_troops(amount, to)
+	move_troops(amount, to, faction)
 	
 	actions_bar.clear_action()
 
 
 ## Move [param amount] troops to [to]
-func move_troops(amount: int, to: TerritoryButton) -> void:
-	add_troops(-amount)
-	to.add_troops(amount)
+func move_troops(amount: int, to: TerritoryButton, faction: Faction) -> void:
+	add_troops(-amount, faction)
+	to.add_troops(amount, faction)
 
 
-func add_troops(amount: int) -> void:
-	tiles[0].add_troops(amount)
+func add_troops(amount: int, faction: Faction) -> void:
+	for tile in tiles:
+		if tile.faction == faction or tile.troop_count == 0:
+			tile.faction = faction
+			tile.add_troops(amount)
+			return
 
 
-func get_troop_count() -> int:
-	return tiles[0].troop_count
+func get_troop_count(faction: Faction) -> int:
+	for tile in tiles:
+		if tile.faction == faction or tile.troop_count == 0:
+			return tile.troop_count
+	
+	return 0
