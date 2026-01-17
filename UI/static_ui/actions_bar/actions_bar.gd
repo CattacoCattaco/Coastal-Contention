@@ -51,13 +51,23 @@ func enter_recruit_mode() -> void:
 
 
 func enter_move_mode() -> void:
+	var faction: Faction = turn_order_bar.turn_order[0]
+	
 	action_buttons[Action.NONE].show()
 	
 	current_action = Action.MOVE
 	
 	for territory in map.territories:
-		if territory.get_troop_count(turn_order_bar.turn_order[0]) > 0:
+		if territory.get_troop_count(faction) == 0:
+			continue
+		
+		if territory.controller == faction:
 			territory.enter_move_source_mode()
+		else:
+			for neighbor in territory.neighbors:
+				if neighbor.controller == faction:
+					territory.enter_move_source_mode()
+					break
 
 
 func pass_turn() -> void:

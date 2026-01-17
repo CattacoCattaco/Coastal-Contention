@@ -16,6 +16,8 @@ var actions_bar: ActionsBar
 var territory: TerritoryData
 var borders: BorderSet
 
+var neighbors: Array[TerritoryButton]
+
 var tiles: Array[Hex]
 var biome_marker_hex: Hex
 
@@ -54,6 +56,11 @@ func _ready() -> void:
 	territory_sprite.position = Vector2(0, 0)
 	
 	territory_sprite.material = material
+	
+	for other_territory in map.territories:
+		if other_territory.territory in borders.connections:
+			neighbors.append(other_territory)
+			other_territory.neighbors.append(self)
 
 
 func _button_hovered() -> void:
@@ -129,11 +136,9 @@ func _pressed() -> void:
 			actions_bar.current_action = ActionsBar.Action.MOVE
 			actions_bar.move_source = self
 			
-			for territory_button in map.territories:
-				if territory_button.territory not in borders.connections:
-					continue
-				
-				territory_button.enter_move_end_mode()
+			for neighbor in neighbors:
+				if controller == faction or neighbor.controller == faction:
+					neighbor.enter_move_end_mode()
 		ActionState.MOVE_END:
 			actions_bar.clear_action()
 			actions_bar.action_buttons[ActionsBar.Action.NONE].show()
@@ -187,7 +192,6 @@ func check_control_change(faction: Faction, increased: bool) -> void:
 		if get_troop_count(faction) > get_troop_count(controller):
 			set_controller(faction)
 	elif faction == controller and not increased:
-		print("decreased")
 		for other_faction: Faction in Faction.values():
 			if get_troop_count(other_faction) > get_troop_count(controller):
 				set_controller(other_faction)
