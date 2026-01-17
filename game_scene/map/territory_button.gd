@@ -13,14 +13,18 @@ const Faction = TurnOrderBar.Faction
 var map: Map
 var turn_order_bar: TurnOrderBar
 var actions_bar: ActionsBar
-var tiles: Array[Hex]
 var territory: TerritoryData
 var borders: BorderSet
+
+var tiles: Array[Hex]
+var biome_marker_hex: Hex
 
 var is_currently_hovered: bool = false
 var is_currently_pressed: bool = false
 
 var current_action_state: ActionState = ActionState.NONE
+
+var controller: Faction = Faction.NONE
 
 
 func _ready() -> void:
@@ -121,6 +125,7 @@ func _pressed() -> void:
 			actions_bar.clear_action()
 		ActionState.MOVE_SOURCE:
 			actions_bar.clear_action()
+			actions_bar.action_buttons[ActionsBar.Action.NONE].show()
 			actions_bar.current_action = ActionsBar.Action.MOVE
 			actions_bar.move_source = self
 			
@@ -131,6 +136,7 @@ func _pressed() -> void:
 				territory_button.enter_move_end_mode()
 		ActionState.MOVE_END:
 			actions_bar.clear_action()
+			actions_bar.action_buttons[ActionsBar.Action.NONE].show()
 			actions_bar.current_action = ActionsBar.Action.MOVE
 			actions_bar.troop_count_panel.show()
 			
@@ -165,16 +171,53 @@ func move_troops(amount: int, to: TerritoryButton, faction: Faction) -> void:
 
 
 func add_troops(amount: int, faction: Faction) -> void:
+	if amount == 0:
+		return
+	
 	for tile in tiles:
 		if tile.faction == faction or tile.troop_count == 0:
 			tile.faction = faction
 			tile.add_troops(amount)
+			check_control_change(faction, amount > 0)
 			return
 
 
+func check_control_change(faction: Faction, increased: bool) -> void:
+	if increased and faction != controller:
+		if get_troop_count(faction) > get_troop_count(controller):
+			set_controller(faction)
+	elif faction == controller and not increased:
+		print("decreased")
+		for other_faction: Faction in Faction.values():
+			if get_troop_count(other_faction) > get_troop_count(controller):
+				set_controller(other_faction)
+			elif get_troop_count(other_faction) == get_troop_count(controller):
+				if controller != faction:
+					remove_controller()
+		
+		if get_troop_count(controller) == 0:
+			remove_controller()
+
+
 func get_troop_count(faction: Faction) -> int:
-	for tile in tiles:
-		if tile.faction == faction or tile.troop_count == 0:
-			return tile.troop_count
+	if faction == Faction.NONE:
+		return 0
 	
-	return 0
+	var troop_count: int = 0
+	for tile in tiles:
+		if tile.faction == faction:
+			troop_count += tile.troop_count
+	
+	return troop_count
+
+
+func set_controller(faction: Faction) -> void:
+	controller = faction
+	
+	biome_marker_hex.control_banners.show()
+	biome_marker_hex.control_banners.texture = TurnOrderBar.FACTION_BANNERS[controller]
+
+
+func remove_controller() -> void:
+	controller = Faction.NONE
+	biome_marker_hex.control_banners.hide()

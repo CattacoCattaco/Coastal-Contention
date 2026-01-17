@@ -38,6 +38,9 @@ func _ready() -> void:
 				add_hex(pos)
 				territory_button.tiles.append(hexes[pos])
 			
+			add_hex(territory.biome_marker_pos)
+			territory_button.biome_marker_hex = hexes[territory.biome_marker_pos]
+			
 			if region.region == RegionData.Region.RED:
 				territory_button.add_troops(2, Faction.PIRATES)
 			elif region.region == RegionData.Region.MAGENTA:

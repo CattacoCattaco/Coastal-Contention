@@ -1,13 +1,14 @@
-[gd_resource type="Resource" script_class="BorderSet" load_steps=6 format=3 uid="uid://coynv2gj6oask"]
+[gd_resource type="Resource" script_class="BorderSet" load_steps=7 format=3 uid="uid://coynv2gj6oask"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_r1vle"]
 [ext_resource type="Resource" uid="uid://birachhx36mmv" path="res://game_scene/map/territory_data/territories/orange/north_swamp.tres" id="3_3mbya"]
 [ext_resource type="Resource" uid="uid://kat300rfsi5y" path="res://game_scene/map/territory_data/territories/orange/west_plains.tres" id="3_r1vle"]
+[ext_resource type="Resource" uid="uid://cl0dh2lth50lr" path="res://game_scene/map/territory_data/territories/red/forest.tres" id="4_k61ln"]
 [ext_resource type="Script" uid="uid://ckn1oykjvgf2j" path="res://game_scene/map/territory_data/borders/border_set.gd" id="4_w4473"]
 [ext_resource type="Resource" uid="uid://ctqcw6rhijvy0" path="res://game_scene/map/territory_data/territories/orange/north_forest.tres" id="5_n8216"]
 
 [resource]
 script = ExtResource("4_w4473")
 source = ExtResource("3_3mbya")
-connections = Array[ExtResource("1_r1vle")]([ExtResource("5_n8216"), ExtResource("3_r1vle")])
+connections = Array[ExtResource("1_r1vle")]([ExtResource("5_n8216"), ExtResource("3_r1vle"), ExtResource("4_k61ln")])
 metadata/_custom_type_script = "uid://ckn1oykjvgf2j"

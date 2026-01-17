@@ -13,6 +13,7 @@ data = {
 script = ExtResource("1_svs8j")
 biome = 1
 tiles = Array[Vector2i]([Vector2i(-14, 0), Vector2i(-14, 1), Vector2i(-13, 1), Vector2i(-13, 2), Vector2i(-12, 2), Vector2i(-12, 3), Vector2i(-11, 2)])
+biome_marker_pos = Vector2i(-11, 3)
 silhouette = ExtResource("2_kyh1r")
 silhouette_bitmap = SubResource("BitMap_kyh1r")
 metadata/_custom_type_script = "uid://ck607a5rkx4j4"

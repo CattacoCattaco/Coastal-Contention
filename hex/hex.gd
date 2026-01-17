@@ -5,6 +5,7 @@ const Faction = TurnOrderBar.Faction
 
 @export var troop_sprite: Sprite2D
 @export var troop_count_label: Label
+@export var control_banners: Sprite2D
 
 var troop_count: int = 0
 var faction: Faction
@@ -12,6 +13,7 @@ var faction: Faction
 
 func _ready() -> void:
 	update_troop_count_label()
+	control_banners.hide()
 
 
 func add_troops(amount: int) -> void:

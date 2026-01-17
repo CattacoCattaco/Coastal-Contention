@@ -14,6 +14,7 @@ script = ExtResource("1_1i3c4")
 region = 0
 biome = 3
 tiles = Array[Vector2i]([Vector2i(-19, -16), Vector2i(-20, -16), Vector2i(-19, -17), Vector2i(-20, -17), Vector2i(-20, -18), Vector2i(-21, -18), Vector2i(-20, -19), Vector2i(-21, -19)])
+biome_marker_pos = Vector2i(-21, -17)
 silhouette = ExtResource("2_ab3xw")
 silhouette_bitmap = SubResource("BitMap_ab3xw")
 metadata/_custom_type_script = "uid://ck607a5rkx4j4"

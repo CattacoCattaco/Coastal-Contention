@@ -5,7 +5,8 @@ enum Faction {
 	PIRATES,
 	MYCOLINGS,
 	ROBOTS,
-	FACTIONS_COUNT,
+	## No faction, also represents the number of factions
+	NONE,
 }
 
 const FACTION_NAMES: Dictionary[Faction, String] = {
@@ -23,6 +24,11 @@ const FACTION_COLORS: Dictionary[Faction, Color] = {
 const FACTION_TROOPS: Dictionary[Faction, Texture2D] = {
 	Faction.PIRATES: preload("res://hex/piece/troop/pirate.png"),
 	Faction.MYCOLINGS: preload("res://hex/piece/troop/mycoling.png"),
+}
+
+const FACTION_BANNERS: Dictionary[Faction, Texture2D] = {
+	Faction.PIRATES: preload("res://hex/control_banners/pirate_banners.png"),
+	Faction.MYCOLINGS: preload("res://hex/control_banners/mycoling_banners.png"),
 }
 
 @export var faction_box_scene: PackedScene
