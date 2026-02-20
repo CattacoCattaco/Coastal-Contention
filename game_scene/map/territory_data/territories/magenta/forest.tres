@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=4 format=4 uid="uid://dupf30oifrucm"]
+[gd_resource type="Resource" script_class="TerritoryData" format=4 uid="uid://dupf30oifrucm"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_xbpoh"]
 [ext_resource type="Texture2D" uid="uid://dbbp577phv1q4" path="res://game_scene/map/territory_data/silhouettes/magenta_forest.png" id="2_eaw08"]

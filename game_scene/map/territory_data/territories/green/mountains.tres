@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=4 format=4 uid="uid://c154qwq2nh7o3"]
+[gd_resource type="Resource" script_class="TerritoryData" format=4 uid="uid://c154qwq2nh7o3"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_uf5n4"]
 [ext_resource type="Texture2D" uid="uid://bjqd53ger0ilk" path="res://game_scene/map/territory_data/silhouettes/green_mountains.png" id="2_homhb"]

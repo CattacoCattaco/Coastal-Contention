@@ -1,23 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkudqtv54b63a"]
+[gd_scene format=3 uid="uid://bkudqtv54b63a"]
 
+[ext_resource type="FontFile" uid="uid://bixxgpddv50wc" path="res://UI/pixel_font_8px.ttf" id="1_6122u"]
 [ext_resource type="Script" uid="uid://c8gcr3ajsx8d4" path="res://UI/static_ui/turn_order_bar/faction_box.gd" id="1_pp31g"]
-[ext_resource type="FontFile" uid="uid://bf5vht50fqa6n" path="res://UI/pixel_font_6px.ttf" id="2_6122u"]
+[ext_resource type="Theme" uid="uid://bd2hc7p3486n2" path="res://UI/flat_button.tres" id="3_6122u"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_pp31g"]
-font = ExtResource("2_6122u")
-font_size = 12
+[sub_resource type="Theme" id="Theme_sc0ya"]
+default_font = ExtResource("1_6122u")
+default_font_size = 16
 
-[node name="FactionBox" type="ColorRect" node_paths=PackedStringArray("name_label")]
-custom_minimum_size = Vector2(150, 32)
+[node name="FactionBox" type="ColorRect" unique_id=1450526883 node_paths=PackedStringArray("attack_button")]
+custom_minimum_size = Vector2(114, 32)
+offset_right = 114.0
+offset_bottom = 32.0
+size_flags_horizontal = 0
+mouse_filter = 2
+theme = SubResource("Theme_sc0ya")
 color = Color(0.64705884, 0.1882353, 0.1882353, 1)
 script = ExtResource("1_pp31g")
-name_label = NodePath("NameLabel")
+attack_button = NodePath("AttackButton")
 
-[node name="NameLabel" type="Label" parent="."]
+[node name="AttackButton" type="Button" parent="." unique_id=1028108701]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_right = 0.5
-offset_top = 10.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
-label_settings = SubResource("LabelSettings_pp31g")
+grow_vertical = 2
+theme = ExtResource("3_6122u")

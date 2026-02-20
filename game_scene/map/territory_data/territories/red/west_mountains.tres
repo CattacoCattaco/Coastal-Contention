@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=4 format=4 uid="uid://bqy2knkirj87o"]
+[gd_resource type="Resource" script_class="TerritoryData" format=4 uid="uid://bqy2knkirj87o"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_1i3c4"]
 [ext_resource type="Texture2D" uid="uid://pg7a3et3kitt" path="res://game_scene/map/territory_data/silhouettes/red_west_mountains.png" id="2_ab3xw"]

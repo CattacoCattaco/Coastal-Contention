@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=4 format=4 uid="uid://b5a8kf8ex42iu"]
+[gd_resource type="Resource" script_class="TerritoryData" format=4 uid="uid://b5a8kf8ex42iu"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_2bayd"]
 [ext_resource type="Texture2D" uid="uid://bx75k6cb67ook" path="res://game_scene/map/territory_data/silhouettes/magenta_south_swamp.png" id="2_cxrcf"]

@@ -21,6 +21,12 @@ const FACTION_COLORS: Dictionary[Faction, Color] = {
 	Faction.ROBOTS: Color("577277"),
 }
 
+const FACTION_HIGHLIGHT_COLORS: Dictionary[Faction, Color] = {
+	Faction.PIRATES: Color("da863e"),
+	Faction.MYCOLINGS: Color("df84a5"),
+	Faction.ROBOTS: Color("a8b5b2"),
+}
+
 const FACTION_TROOPS: Dictionary[Faction, Texture2D] = {
 	Faction.PIRATES: preload("res://hex/piece/troop/pirate.png"),
 	Faction.MYCOLINGS: preload("res://hex/piece/troop/mycoling.png"),

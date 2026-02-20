@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=4 format=4 uid="uid://bkeo1pijd3mb8"]
+[gd_resource type="Resource" script_class="TerritoryData" format=4 uid="uid://bkeo1pijd3mb8"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_ytqkg"]
 [ext_resource type="Texture2D" uid="uid://cxw6b0ryp1yg" path="res://game_scene/map/territory_data/silhouettes/brown_west_swamp.png" id="2_7ykwp"]

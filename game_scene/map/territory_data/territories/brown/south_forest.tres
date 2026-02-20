@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=4 format=4 uid="uid://cencrd551reta"]
+[gd_resource type="Resource" script_class="TerritoryData" format=4 uid="uid://cencrd551reta"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_r308b"]
 [ext_resource type="Texture2D" uid="uid://h71eb8s301d" path="res://game_scene/map/territory_data/silhouettes/brown_south_forest.png" id="2_0p3oq"]

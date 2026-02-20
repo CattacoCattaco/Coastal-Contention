@@ -5,6 +5,7 @@ enum Action {
 	NONE,
 	RECRUIT,
 	MOVE,
+	ATTACK,
 	PASS,
 }
 
@@ -27,6 +28,7 @@ func _ready() -> void:
 	action_buttons[Action.NONE].pressed.connect(clear_action)
 	action_buttons[Action.RECRUIT].pressed.connect(enter_recruit_mode)
 	action_buttons[Action.MOVE].pressed.connect(enter_move_mode)
+	action_buttons[Action.ATTACK].pressed.connect(enter_attack_mode)
 	action_buttons[Action.PASS].pressed.connect(pass_turn)
 	
 	clear_action()
@@ -58,6 +60,7 @@ func enter_move_mode() -> void:
 	current_action = Action.MOVE
 	
 	for territory in map.territories:
+		# Important for if neighbor is controlled
 		if territory.get_troop_count(faction) == 0:
 			continue
 		
@@ -68,6 +71,16 @@ func enter_move_mode() -> void:
 				if neighbor.controller == faction:
 					territory.enter_move_source_mode()
 					break
+
+
+func enter_attack_mode() -> void:
+	action_buttons[Action.NONE].show()
+	
+	current_action = Action.RECRUIT
+	
+	for territory in map.territories:
+		if territory.can_attack(turn_order_bar.turn_order[0]):
+			territory.enter_attack_mode()
 
 
 func pass_turn() -> void:

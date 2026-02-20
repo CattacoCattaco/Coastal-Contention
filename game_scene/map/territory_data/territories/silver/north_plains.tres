@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=4 format=4 uid="uid://l5q4eqct70jk"]
+[gd_resource type="Resource" script_class="TerritoryData" format=4 uid="uid://l5q4eqct70jk"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_kbsvl"]
 [ext_resource type="Texture2D" uid="uid://cin2rwp8clmo3" path="res://game_scene/map/territory_data/silhouettes/silver_north_plains.png" id="2_1e2ia"]

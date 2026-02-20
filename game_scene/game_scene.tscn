@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://c7xaypxjnfy08"]
+[gd_scene format=3 uid="uid://c7xaypxjnfy08"]
 
 [ext_resource type="Texture2D" uid="uid://dt68ugg1ewqjf" path="res://game_scene/map/map.png" id="1_n4lbc"]
+[ext_resource type="Script" uid="uid://b1kbfldrvopcl" path="res://game_scene/camera/draggable_camera.gd" id="1_xes44"]
 [ext_resource type="PackedScene" uid="uid://cqntgoxaotkhx" path="res://hex/hex.tscn" id="2_3kg8t"]
 [ext_resource type="Script" uid="uid://bf5u3v71clk5" path="res://UI/static_ui/actions_bar/actions_bar.gd" id="2_f63yk"]
 [ext_resource type="Script" uid="uid://bis25luymf83l" path="res://game_scene/map/map.gd" id="2_k340r"]
@@ -17,11 +18,27 @@
 [ext_resource type="Resource" uid="uid://b7ndgjy2s3t8c" path="res://game_scene/map/territory_data/regions/silver_region.tres" id="10_cvb1i"]
 [ext_resource type="Shader" uid="uid://df0c1jecsx7w6" path="res://game_scene/map/territory_button.gdshader" id="13_wohtb"]
 
-[node name="GameScene" type="Node2D"]
+[node name="GameScene" type="Node2D" unique_id=2053149305]
 
-[node name="MapCamera" type="Camera2D" parent="."]
+[node name="DraggableCamera" type="Camera2D" parent="." unique_id=1928381536 node_paths=PackedStringArray("map", "static_ui")]
+script = ExtResource("1_xes44")
+map = NodePath("../Map")
+static_ui = NodePath("../UI")
 
-[node name="UI" type="Control" parent="MapCamera" node_paths=PackedStringArray("map", "camera")]
+[node name="Map" type="Sprite2D" parent="." unique_id=367619554 node_paths=PackedStringArray("actions_bar", "turn_order_bar")]
+texture = ExtResource("1_n4lbc")
+script = ExtResource("2_k340r")
+hex_scene = ExtResource("2_3kg8t")
+territory_shader = ExtResource("13_wohtb")
+actions_bar = NodePath("../UI/ActionsBar")
+turn_order_bar = NodePath("../UI/TurnOrderBar")
+regions = Array[ExtResource("4_8l73x")]([ExtResource("5_adbct"), ExtResource("6_adbct"), ExtResource("5_mw77h"), ExtResource("8_cvb1i"), ExtResource("9_f63yk"), ExtResource("10_cvb1i")])
+
+[node name="MapTerritoryLines" type="Sprite2D" parent="Map" unique_id=1256288731]
+z_index = 10
+texture = ExtResource("9_mmqx0")
+
+[node name="UI" type="Control" parent="." unique_id=291517960]
 z_index = 50
 custom_minimum_size = Vector2(480, 270)
 layout_mode = 3
@@ -30,13 +47,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -135.0
+offset_right = 240.0
+offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("3_k340r")
-map = NodePath("../../Map")
-camera = NodePath("..")
 
-[node name="ActionsBar" type="VBoxContainer" parent="MapCamera/UI" node_paths=PackedStringArray("map", "turn_order_bar", "action_buttons", "troop_count_panel", "troop_count_spin_box", "troop_count_submit_button")]
+[node name="ActionsBar" type="VBoxContainer" parent="UI" unique_id=1622349106 node_paths=PackedStringArray("map", "turn_order_bar", "action_buttons", "troop_count_panel", "troop_count_spin_box", "troop_count_submit_button")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -45,30 +65,34 @@ offset_left = -51.0
 offset_bottom = 40.0
 grow_horizontal = 0
 script = ExtResource("2_f63yk")
-map = NodePath("../../../Map")
+map = NodePath("../../Map")
 turn_order_bar = NodePath("../TurnOrderBar")
-action_buttons = [NodePath("CancelButton"), NodePath("RecruitButton"), NodePath("MoveButton"), NodePath("PassButton")]
+action_buttons = [NodePath("CancelButton"), NodePath("RecruitButton"), NodePath("MoveButton"), NodePath("AttackButton"), NodePath("PassButton")]
 troop_count_panel = NodePath("../TroopCountPanel")
 troop_count_spin_box = NodePath("../TroopCountPanel/MarginContainer/VBoxContainer/VBoxContainer/TroopCountSpinBox")
 troop_count_submit_button = NodePath("../TroopCountPanel/MarginContainer/VBoxContainer/VBoxContainer/SubmitButton")
 
-[node name="CancelButton" type="Button" parent="MapCamera/UI/ActionsBar"]
+[node name="CancelButton" type="Button" parent="UI/ActionsBar" unique_id=625551286]
 layout_mode = 2
 text = "Cancel"
 
-[node name="RecruitButton" type="Button" parent="MapCamera/UI/ActionsBar"]
+[node name="RecruitButton" type="Button" parent="UI/ActionsBar" unique_id=900701540]
 layout_mode = 2
 text = "Recruit"
 
-[node name="MoveButton" type="Button" parent="MapCamera/UI/ActionsBar"]
+[node name="MoveButton" type="Button" parent="UI/ActionsBar" unique_id=623191763]
 layout_mode = 2
 text = "Move"
 
-[node name="PassButton" type="Button" parent="MapCamera/UI/ActionsBar"]
+[node name="AttackButton" type="Button" parent="UI/ActionsBar" unique_id=1694461899]
+layout_mode = 2
+text = "Attack"
+
+[node name="PassButton" type="Button" parent="UI/ActionsBar" unique_id=1256915068]
 layout_mode = 2
 text = "Pass"
 
-[node name="TurnOrderBar" type="VBoxContainer" parent="MapCamera/UI"]
+[node name="TurnOrderBar" type="VBoxContainer" parent="UI" unique_id=1358279048]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
 anchors_preset = -1
@@ -80,7 +104,7 @@ alignment = 1
 script = ExtResource("3_a85jl")
 faction_box_scene = ExtResource("4_xes44")
 
-[node name="TroopCountPanel" type="PanelContainer" parent="MapCamera/UI"]
+[node name="TroopCountPanel" type="PanelContainer" parent="UI" unique_id=907345659]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -94,44 +118,48 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MapCamera/UI/TroopCountPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="UI/TroopCountPanel" unique_id=947806482]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 20
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MapCamera/UI/TroopCountPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TroopCountPanel/MarginContainer" unique_id=1388073196]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="MapCamera/UI/TroopCountPanel/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="UI/TroopCountPanel/MarginContainer/VBoxContainer" unique_id=1463140529]
 layout_mode = 2
 text = "Troops to move:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MapCamera/UI/TroopCountPanel/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/TroopCountPanel/MarginContainer/VBoxContainer" unique_id=1226832600]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="TroopCountSpinBox" type="SpinBox" parent="MapCamera/UI/TroopCountPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="TroopCountSpinBox" type="SpinBox" parent="UI/TroopCountPanel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=288825496]
 layout_mode = 2
 rounded = true
 
-[node name="SubmitButton" type="Button" parent="MapCamera/UI/TroopCountPanel/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="SubmitButton" type="Button" parent="UI/TroopCountPanel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1570757153]
 layout_mode = 2
 text = "Submit"
 
-[node name="Map" type="Sprite2D" parent="." node_paths=PackedStringArray("actions_bar", "turn_order_bar")]
-texture = ExtResource("1_n4lbc")
-script = ExtResource("2_k340r")
-hex_scene = ExtResource("2_3kg8t")
-territory_shader = ExtResource("13_wohtb")
-actions_bar = NodePath("../MapCamera/UI/ActionsBar")
-turn_order_bar = NodePath("../MapCamera/UI/TurnOrderBar")
-regions = Array[ExtResource("4_8l73x")]([ExtResource("5_adbct"), ExtResource("6_adbct"), ExtResource("5_mw77h"), ExtResource("8_cvb1i"), ExtResource("9_f63yk"), ExtResource("10_cvb1i")])
-
-[node name="MapTerritoryLines" type="Sprite2D" parent="Map"]
-z_index = 10
-texture = ExtResource("9_mmqx0")
+[node name="ChooseDefenderLabel" type="Label" parent="UI" unique_id=1244323303]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -107.5
+offset_top = -11.5
+offset_right = 107.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Choose who to attack."
+horizontal_alignment = 1

@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="TerritoryData" load_steps=4 format=4 uid="uid://cfn3xycskfeyu"]
+[gd_resource type="Resource" script_class="TerritoryData" format=4 uid="uid://cfn3xycskfeyu"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_gmy5v"]
 [ext_resource type="Texture2D" uid="uid://8ry5fs4n3jwn" path="res://game_scene/map/territory_data/silhouettes/silver_mountains.png" id="2_hsk3i"]

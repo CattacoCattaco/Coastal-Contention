@@ -6,6 +6,7 @@ enum ActionState {
 	RECRUIT,
 	MOVE_SOURCE,
 	MOVE_END,
+	ATTACK,
 }
 
 const Faction = TurnOrderBar.Faction
@@ -118,6 +119,12 @@ func enter_move_end_mode() -> void:
 	set_border(Color("73bed3"))
 
 
+func enter_attack_mode() -> void:
+	disabled = false
+	current_action_state = ActionState.ATTACK
+	set_border(Color("a53030"))
+
+
 func set_border(color: Color) -> void:
 	var shader_material: ShaderMaterial = material
 	shader_material.set_shader_parameter("outline_color", color)
@@ -157,6 +164,22 @@ func _pressed() -> void:
 			
 			submit_button.pressed.connect(
 					move_source.move_from_troop_count_panel.bind(self, faction))
+		ActionState.ATTACK:
+			actions_bar.clear_action()
+			actions_bar.action_buttons[ActionsBar.Action.NONE].show()
+			actions_bar.current_action = ActionsBar.Action.ATTACK
+			
+			for faction_box in turn_order_bar.faction_boxes:
+				if faction_box.faction == faction or get_troop_count(faction_box.faction) == 0:
+					continue
+				
+				faction_box.attackable = true
+				
+				for connection in faction_box.attack_button.pressed.get_connections():
+					faction_box.attack_button.pressed.disconnect(connection["callable"])
+				
+				faction_box.attack_button.pressed.connect(
+						do_attack.bind(faction, faction_box.faction))
 
 
 ## Move troops from this territory to [param to] in an amount based on the
@@ -175,6 +198,59 @@ func move_troops(amount: int, to: TerritoryButton, faction: Faction) -> void:
 	to.add_troops(amount, faction)
 
 
+func can_attack(attacker: Faction) -> bool:
+	if not get_troop_count(attacker) > 0:
+		return false
+	
+	for tile in tiles:
+		if tile.faction != attacker and tile.troop_count > 0:
+			return true
+	
+	return false
+
+
+func do_attack(attacker: Faction, defender: Faction) -> void:
+	for faction_box in turn_order_bar.faction_boxes:
+		faction_box.attackable = false
+	
+	var attacker_troops: int = get_troop_count(attacker)
+	var defender_troops: int = get_troop_count(defender)
+	
+	var attack_rolls: int = min(attacker_troops, 4)
+	var defense_rolls: int = min(defender_troops, 5)
+	
+	var attack_roll_values: Array[int] = []
+	var defense_roll_values: Array[int] = []
+	
+	var attack_hits: int = 0
+	var defense_hits: int = 0
+	
+	for i in range(attack_rolls):
+		var roll: int = Random.roll_die()
+		
+		attack_roll_values.append(roll)
+		if roll >= 3:
+			attack_hits += 1
+	
+	for i in range(defense_rolls):
+		var roll: int = Random.roll_die()
+		
+		defense_roll_values.append(roll)
+		if roll >= 4:
+			defense_hits += 1
+	
+	print("Attack rolls: ", attack_roll_values)
+	print("Defense rolls: ", defense_roll_values)
+	print("Attack hits: ", attack_hits)
+	print("Defense hits: ", defense_hits)
+	
+	# Players nock out eachother's pieces
+	remove_troops(attack_hits, defender)
+	remove_troops(defense_hits, attacker)
+	
+	actions_bar.clear_action()
+
+
 func add_troops(amount: int, faction: Faction) -> void:
 	if amount == 0:
 		return
@@ -183,8 +259,31 @@ func add_troops(amount: int, faction: Faction) -> void:
 		if tile.faction == faction or tile.troop_count == 0:
 			tile.faction = faction
 			tile.add_troops(amount)
-			check_control_change(faction, amount > 0)
+			check_control_change(faction, true)
 			return
+
+
+func remove_troops(amount: int, faction: Faction) -> void:
+	if amount == 0:
+		return
+	
+	var amount_removed: int = 0
+	
+	for tile in tiles:
+		if tile.faction == faction:
+			if tile.troop_count < amount - amount_removed:
+				amount_removed += tile.troop_count
+				tile.add_troops(-tile.troop_count)
+			else:
+				tile.add_troops(-(amount - amount_removed))
+				amount_removed = amount
+				if tile.troop_count == 0:
+					tile.faction = Faction.NONE
+			
+			check_control_change(faction, false)
+			
+			if amount_removed == amount:
+				return
 
 
 func check_control_change(faction: Faction, increased: bool) -> void:
