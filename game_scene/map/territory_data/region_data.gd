@@ -4,7 +4,7 @@ extends Resource
 
 enum Region {
 	RED,
-	ORANGE,
+	GOLD,
 	BROWN,
 	GREEN,
 	MAGENTA,

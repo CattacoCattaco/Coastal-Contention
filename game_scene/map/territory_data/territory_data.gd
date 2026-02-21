@@ -11,7 +11,7 @@ enum Biome {
 
 const Region = RegionData.Region
 
-@export var region: Region = Region.ORANGE
+@export var region: Region = Region.GOLD
 @export var biome: Biome = Biome.PLAINS
 @export var tiles: Array[Vector2i]
 @export var biome_marker_pos: Vector2i
