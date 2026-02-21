@@ -4,7 +4,7 @@ extends ColorRect
 signal finished()
 signal _finished_roll()
 
-const Faction = TurnOrderBar.Faction
+const Faction = FactionData.Faction
 
 @export var camera: DraggableCamera
 @export var attack_dice_label: Label

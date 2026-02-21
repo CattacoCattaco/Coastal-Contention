@@ -9,7 +9,7 @@ enum Action {
 	PASS,
 }
 
-const Faction = TurnOrderBar.Faction
+const Faction = FactionData.Faction
 
 @export var map: Map
 @export var turn_order_bar: TurnOrderBar

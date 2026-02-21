@@ -2,7 +2,7 @@
 class_name FactionBox
 extends Control
 
-const Faction = TurnOrderBar.Faction
+const Faction = FactionData.Faction
 
 @export_tool_button("Redraw") var redraw_from_editor: Callable = queue_redraw
 
@@ -29,9 +29,10 @@ func _draw() -> void:
 	var font: Font = theme.default_font
 	var font_size: int = theme.default_font_size
 	var name_pos := Vector2(10, custom_minimum_size.y + font_size) / 2
-	var faction_name: String = TurnOrderBar.FACTION_NAMES[faction]
+	var faction_data: FactionData = TurnOrderBar.FACTION_DATA[faction]
+	var faction_name: String = faction_data.faction_name
 	var name_alignment: HorizontalAlignment = HORIZONTAL_ALIGNMENT_LEFT
-	var faction_color: Color = TurnOrderBar.FACTION_COLORS[faction]
+	var faction_color: Color = faction_data.main_color
 	
 	custom_minimum_size.x = font.get_string_size(faction_name, name_alignment, -1, font_size).x + 19
 	
@@ -46,7 +47,7 @@ func _draw() -> void:
 			Vector2(custom_minimum_size.x - 0.5, 0.5),
 			Vector2(0.5, 0.5),
 		])
-		var highlight_color: Color = TurnOrderBar.FACTION_HIGHLIGHT_COLORS[faction]
+		var highlight_color: Color = faction_data.highlight_color
 		draw_polyline(corners, highlight_color, 1)
 
 

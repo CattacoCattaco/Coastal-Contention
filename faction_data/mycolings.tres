@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="FactionData" format=3 uid="uid://dxy0c16on062a"]
+
+[ext_resource type="Texture2D" uid="uid://dqrhey43idsx3" path="res://game_scene/map/hex/control_banners/mycoling_banners.png" id="1_amwgp"]
+[ext_resource type="Script" uid="uid://j2qkt73y84jp" path="res://faction_data/faction_data.gd" id="2_75y5r"]
+[ext_resource type="Texture2D" uid="uid://8mij70ofluxk" path="res://game_scene/map/hex/piece/troop/mycoling.png" id="3_mhlm5"]
+
+[resource]
+script = ExtResource("2_75y5r")
+faction = 1
+faction_name = "Mycolings"
+main_color = Color(0.63529414, 0.24313726, 0.54901963, 1)
+highlight_color = Color(0.8745098, 0.5176471, 0.64705884, 1)
+troop_sprite = ExtResource("3_mhlm5")
+control_banners = ExtResource("1_amwgp")
+metadata/_custom_type_script = "uid://j2qkt73y84jp"

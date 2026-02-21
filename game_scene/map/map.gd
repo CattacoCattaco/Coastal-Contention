@@ -1,7 +1,7 @@
 class_name Map
 extends Sprite2D
 
-const Faction = TurnOrderBar.Faction
+const Faction = FactionData.Faction
 
 const UP := Vector2i(0, -1)
 const UP_LEFT := Vector2i(-1, -1)

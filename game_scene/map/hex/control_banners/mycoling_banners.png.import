@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjj3yenv8bn5"
-path="res://.godot/imported/pirate.png-b0fcabad110a3fb3ace5a6b862e2aebf.ctex"
+uid="uid://dqrhey43idsx3"
+path="res://.godot/imported/mycoling_banners.png-91d97f99b84dada1646ff079a00799b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hex/piece/troop/pirate.png"
-dest_files=["res://.godot/imported/pirate.png-b0fcabad110a3fb3ace5a6b862e2aebf.ctex"]
+source_file="res://game_scene/map/hex/control_banners/mycoling_banners.png"
+dest_files=["res://.godot/imported/mycoling_banners.png-91d97f99b84dada1646ff079a00799b4.ctex"]
 
 [params]
 

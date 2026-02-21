@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dt68ugg1ewqjf" path="res://game_scene/map/map.png" id="1_n4lbc"]
 [ext_resource type="Script" uid="uid://b1kbfldrvopcl" path="res://game_scene/camera/draggable_camera.gd" id="1_xes44"]
-[ext_resource type="PackedScene" uid="uid://cqntgoxaotkhx" path="res://hex/hex.tscn" id="2_3kg8t"]
+[ext_resource type="PackedScene" uid="uid://cqntgoxaotkhx" path="res://game_scene/map/hex/hex.tscn" id="2_3kg8t"]
 [ext_resource type="Script" uid="uid://bf5u3v71clk5" path="res://UI/static_ui/actions_bar/actions_bar.gd" id="2_f63yk"]
 [ext_resource type="Script" uid="uid://bis25luymf83l" path="res://game_scene/map/map.gd" id="2_k340r"]
 [ext_resource type="Script" uid="uid://bvar2d3rybiym" path="res://UI/static_ui/turn_order_bar/turn_order_bar.gd" id="3_a85jl"]
@@ -57,7 +57,9 @@ territory_shader = ExtResource("13_wohtb")
 actions_bar = NodePath("../UI/ActionsBar")
 turn_order_bar = NodePath("../UI/TurnOrderBar")
 attack_screen = NodePath("../UI/AttackScreen")
-regions = Array[ExtResource("4_8l73x")]([ExtResource("5_adbct"), ExtResource("6_adbct"), ExtResource("5_mw77h"), ExtResource("8_cvb1i"), ExtResource("9_f63yk"), ExtResource("10_cvb1i")])
+regions = Array[ExtResource("4_8l73x")]([ExtResource("10_cvb1i"), ExtResource("6_adbct"), ExtResource("5_mw77h"), ExtResource("8_cvb1i"), ExtResource("9_f63yk"), ExtResource("5_adbct")])
+hex_position_offset = null
+hex_size = null
 
 [node name="MapTerritoryLines" type="Sprite2D" parent="Map" unique_id=1256288731]
 z_index = 10

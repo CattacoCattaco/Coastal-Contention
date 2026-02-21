@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="FactionData" format=3 uid="uid://b731i4v5wt6ac"]
+
+[ext_resource type="Script" uid="uid://j2qkt73y84jp" path="res://faction_data/faction_data.gd" id="1_6onnb"]
+[ext_resource type="Texture2D" uid="uid://co7rvhirw4f4b" path="res://game_scene/map/hex/control_banners/pirate_banners.png" id="1_buccu"]
+[ext_resource type="Texture2D" uid="uid://cjj3yenv8bn5" path="res://game_scene/map/hex/piece/troop/pirate.png" id="3_s4qxv"]
+
+[resource]
+script = ExtResource("1_6onnb")
+faction_name = "Pirates"
+main_color = Color(0.64705884, 0.1882353, 0.1882353, 1)
+highlight_color = Color(0.85490197, 0.5254902, 0.24313726, 1)
+troop_sprite = ExtResource("3_s4qxv")
+control_banners = ExtResource("1_buccu")
+metadata/_custom_type_script = "uid://j2qkt73y84jp"

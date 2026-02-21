@@ -1,41 +1,16 @@
 class_name TurnOrderBar
 extends BoxContainer
 
-enum Faction {
-	PIRATES,
-	MYCOLINGS,
-	ROBOTS,
-	## No faction, also represents the number of factions
-	NONE,
-}
+const Faction = FactionData.Faction
 
-const FACTION_NAMES: Dictionary[Faction, String] = {
-	Faction.PIRATES: "Pirates",
-	Faction.MYCOLINGS: "Mycolings",
-	Faction.ROBOTS: "Robots",
-}
-
-const FACTION_COLORS: Dictionary[Faction, Color] = {
-	Faction.PIRATES: Color("a53030"),
-	Faction.MYCOLINGS: Color("a23e8c"),
-	Faction.ROBOTS: Color("577277"),
-}
-
-const FACTION_HIGHLIGHT_COLORS: Dictionary[Faction, Color] = {
-	Faction.PIRATES: Color("da863e"),
-	Faction.MYCOLINGS: Color("df84a5"),
-	Faction.ROBOTS: Color("a8b5b2"),
-}
-
-const FACTION_TROOPS: Dictionary[Faction, Texture2D] = {
-	Faction.PIRATES: preload("res://hex/piece/troop/pirate.png"),
-	Faction.MYCOLINGS: preload("res://hex/piece/troop/mycoling.png"),
-}
-
-const FACTION_BANNERS: Dictionary[Faction, Texture2D] = {
-	Faction.PIRATES: preload("res://hex/control_banners/pirate_banners.png"),
-	Faction.MYCOLINGS: preload("res://hex/control_banners/mycoling_banners.png"),
-}
+const FACTION_DATA: Array[FactionData] = [
+	preload("res://faction_data/pirates.tres"),
+	preload("res://faction_data/clerics.tres"),
+	preload("res://faction_data/archers.tres"),
+	preload("res://faction_data/druids.tres"),
+	preload("res://faction_data/mycolings.tres"),
+	preload("res://faction_data/robots.tres"),
+]
 
 @export var faction_box_scene: PackedScene
 

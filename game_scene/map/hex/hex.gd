@@ -1,7 +1,7 @@
 class_name Hex
 extends Sprite2D
 
-const Faction = TurnOrderBar.Faction
+const Faction = FactionData.Faction
 
 @export var troop_sprite: Sprite2D
 @export var troop_count_label: Label
@@ -27,7 +27,7 @@ func update_troop_count_label() -> void:
 		troop_sprite.show()
 		troop_count_label.show()
 		
-		troop_sprite.texture = TurnOrderBar.FACTION_TROOPS[faction]
+		troop_sprite.texture = TurnOrderBar.FACTION_DATA[faction].troop_sprite
 	else:
 		troop_sprite.hide()
 		troop_count_label.hide()

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://8mij70ofluxk"
-path="res://.godot/imported/mycoling.png-f4a56b5eecb522130f0425f831c0b977.ctex"
+path="res://.godot/imported/mycoling.png-1b23495ad581cbdb7445a1f966bc3a19.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://hex/piece/troop/mycoling.png"
-dest_files=["res://.godot/imported/mycoling.png-f4a56b5eecb522130f0425f831c0b977.ctex"]
+source_file="res://game_scene/map/hex/piece/troop/mycoling.png"
+dest_files=["res://.godot/imported/mycoling.png-1b23495ad581cbdb7445a1f966bc3a19.ctex"]
 
 [params]
 

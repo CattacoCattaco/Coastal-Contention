@@ -9,7 +9,7 @@ enum ActionState {
 	ATTACK,
 }
 
-const Faction = TurnOrderBar.Faction
+const Faction = FactionData.Faction
 
 var map: Map
 var turn_order_bar: TurnOrderBar
@@ -286,8 +286,9 @@ func get_troop_count(faction: Faction) -> int:
 func set_controller(faction: Faction) -> void:
 	controller = faction
 	
+	var controller_data: FactionData = TurnOrderBar.FACTION_DATA[controller]
 	biome_marker_hex.control_banners.show()
-	biome_marker_hex.control_banners.texture = TurnOrderBar.FACTION_BANNERS[controller]
+	biome_marker_hex.control_banners.texture = controller_data.control_banners
 
 
 func remove_controller() -> void:
