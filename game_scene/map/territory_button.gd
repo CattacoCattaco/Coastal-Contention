@@ -213,40 +213,9 @@ func do_attack(attacker: Faction, defender: Faction) -> void:
 	for faction_box in turn_order_bar.faction_boxes:
 		faction_box.attackable = false
 	
-	var attacker_troops: int = get_troop_count(attacker)
-	var defender_troops: int = get_troop_count(defender)
+	map.attack_screen.do_attack(self, attacker, defender)
 	
-	var attack_rolls: int = min(attacker_troops, 4)
-	var defense_rolls: int = min(defender_troops, 5)
-	
-	var attack_roll_values: Array[int] = []
-	var defense_roll_values: Array[int] = []
-	
-	var attack_hits: int = 0
-	var defense_hits: int = 0
-	
-	for i in range(attack_rolls):
-		var roll: int = Random.roll_die()
-		
-		attack_roll_values.append(roll)
-		if roll >= 3:
-			attack_hits += 1
-	
-	for i in range(defense_rolls):
-		var roll: int = Random.roll_die()
-		
-		defense_roll_values.append(roll)
-		if roll >= 4:
-			defense_hits += 1
-	
-	print("Attack rolls: ", attack_roll_values)
-	print("Defense rolls: ", defense_roll_values)
-	print("Attack hits: ", attack_hits)
-	print("Defense hits: ", defense_hits)
-	
-	# Players nock out eachother's pieces
-	remove_troops(attack_hits, defender)
-	remove_troops(defense_hits, attacker)
+	await map.attack_screen.finished
 	
 	actions_bar.clear_action()
 

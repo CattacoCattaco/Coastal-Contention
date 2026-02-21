@@ -15,6 +15,7 @@ const UP_RIGHT := Vector2i(1, 0)
 
 @export var actions_bar: ActionsBar
 @export var turn_order_bar: TurnOrderBar
+@export var attack_screen: AttackScreen
 
 @export var regions: Array[RegionData]
 
