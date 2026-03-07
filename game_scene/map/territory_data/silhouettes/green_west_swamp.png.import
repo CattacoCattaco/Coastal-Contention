@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cxw6b0ryp1yg"
-path="res://.godot/imported/brown_west_swamp.png-969bbf29652a77b9aa93ffecc01ca725.ctex"
+path="res://.godot/imported/green_west_swamp.png-3e9ca5372c595033aeb0b2a0a5ff2802.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scene/map/territory_data/silhouettes/brown_west_swamp.png"
-dest_files=["res://.godot/imported/brown_west_swamp.png-969bbf29652a77b9aa93ffecc01ca725.ctex"]
+source_file="res://game_scene/map/territory_data/silhouettes/green_west_swamp.png"
+dest_files=["res://.godot/imported/green_west_swamp.png-3e9ca5372c595033aeb0b2a0a5ff2802.ctex"]
 
 [params]
 

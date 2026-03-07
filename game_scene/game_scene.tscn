@@ -10,9 +10,9 @@
 [ext_resource type="Script" uid="uid://rakxnjbr7rll" path="res://game_scene/map/territory_data/region_data.gd" id="4_8l73x"]
 [ext_resource type="PackedScene" uid="uid://bkudqtv54b63a" path="res://UI/static_ui/turn_order_bar/faction_box.tscn" id="4_xes44"]
 [ext_resource type="Resource" uid="uid://77tejnqhmkgh" path="res://game_scene/map/territory_data/regions/silver_region.tres" id="5_adbct"]
-[ext_resource type="Resource" uid="uid://ofpsvkb5ob77" path="res://game_scene/map/territory_data/regions/brown_region.tres" id="5_mw77h"]
+[ext_resource type="Resource" uid="uid://ofpsvkb5ob77" path="res://game_scene/map/territory_data/regions/green_region.tres" id="5_mw77h"]
 [ext_resource type="Resource" uid="uid://b2me5aq6s2w44" path="res://game_scene/map/territory_data/regions/gold_region.tres" id="6_adbct"]
-[ext_resource type="Resource" uid="uid://c605n3swbs02q" path="res://game_scene/map/territory_data/regions/green_region.tres" id="8_cvb1i"]
+[ext_resource type="Resource" uid="uid://c605n3swbs02q" path="res://game_scene/map/territory_data/regions/brown_region.tres" id="8_cvb1i"]
 [ext_resource type="Resource" uid="uid://b0dkamxibkurr" path="res://game_scene/map/territory_data/regions/magenta_region.tres" id="9_f63yk"]
 [ext_resource type="Texture2D" uid="uid://dhsona311mvph" path="res://game_scene/map/map_territory_lines.png" id="9_mmqx0"]
 [ext_resource type="Resource" uid="uid://b7ndgjy2s3t8c" path="res://game_scene/map/territory_data/regions/red_region.tres" id="10_cvb1i"]
@@ -132,6 +132,7 @@ script = ExtResource("3_a85jl")
 faction_box_scene = ExtResource("4_xes44")
 
 [node name="TroopCountPanel" type="PanelContainer" parent="UI" unique_id=907345659]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -175,6 +176,7 @@ layout_mode = 2
 text = "Submit"
 
 [node name="AttackScreen" type="ColorRect" parent="UI" unique_id=1257937478 node_paths=PackedStringArray("camera", "attack_dice_label", "defense_dice_label", "attack_dice", "defense_dice")]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

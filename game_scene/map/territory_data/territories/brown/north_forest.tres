@@ -1,20 +1,20 @@
-[gd_resource type="Resource" script_class="TerritoryData" format=4 uid="uid://d228ne4ikroaf"]
+[gd_resource type="Resource" script_class="TerritoryData" format=4 uid="uid://bs78c8o3iqm61"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_bsavf"]
-[ext_resource type="Texture2D" uid="uid://d2jx7mfucrqxb" path="res://game_scene/map/territory_data/silhouettes/brown_north_forest.png" id="2_gv3k4"]
+[ext_resource type="Texture2D" uid="uid://bumipf76olh2s" path="res://game_scene/map/territory_data/silhouettes/brown_north_forest.png" id="2_gv3k4"]
 
-[sub_resource type="BitMap" id="BitMap_gv3k4"]
+[sub_resource type="BitMap" id="BitMap_2e6gi"]
 data = {
-"data": PackedByteArray("AAAAAOD/fwAAAADg/38AAAAAAPD//wAAAADw//8AAAAAAPj//wAAAAD4//8AAAAAAPj//wEAAAD4//8BAAAAAPz//wMAAAD8//8DAAAAAPz//wMAAAD8//8DAAAAAP7//wcAAAD+//8HAAAAAP///wcAAAD///8HAAAAAP///w8AAAD///8PAAAAgP///x8AAID///8fAAAAgP///x8AAID///8fAAAAwP///z8AAMD///8/AAAA4P///z8AAOD///8/AAAA4P///38AAOD///9/AAAA8P////8AAPD/////AAAA8P////8AAPD/////AP7/////////////////AP////////////////9/gP////////////////8/gP////////////////8/wP////////////////8fwP////////////////8f4P////////////////8P8P////////////////8H8P////////////////8H+P////////////////8D+P////////////////8D/P////////////////8B/v////////////////8A/v////////////////8A/////////////////38A//////////////8PAAAA//////////////8PAAAA/v////////////8HAAAA/v////////////8DAAAA/P////////////8DAAAA+P////////////8BAAAA+P////////////8BAAAA8P////////////8AAAAA8P///////////38AAAAA4P///////////38AAAAAwP///////////z8AAAAAwP///////////z8AAAAAgP///////////x8AAAAAgP///////////w8AAAAAAP///////////w8AAAAAAP7//////////wcAAAAAAP7///////8AAAAAAAAAAP7///////8AAAAAAAAAAP///////38AAAAAAAAAgP///////z8AAAAAAAAAgP///////z8AAAAAAAAAwP///////x8AAAAAAAAAwP///////x8AAAAAAAAA4P///////w8AAAAAAAAA8P///////wcAAAAAAAAA8P///////wcAAAAAAAAA+P///////wMAAAAAAAAA+P///////wMAAAAAAAAA/P///////wEAAAAAAAAA/v///////wAAAAAAAAAA/v///////wAAAAAAAAAA////////fwAAAAAAAAAA/////w8AAAAAAAAAAAAA/////w8AAAAAAAAAAAAA/v///wcAAAAAAAAAAAAA/v///wMAAAAAAAAAAAAA/P///wMAAAAAAAAAAAAA+P///wEAAAAAAAAAAAAA+P///wEAAAAAAAAAAAAA8P///wAAAAAAAAAAAAAA8P//fwAAAAAAAAAAAAAA4P//fwAAAAAAAAAAAAAAwP//PwAAAAAAAAAAAAAAwP//PwAAAAAAAAAAAAAAgP//HwAAAAAAAAAAAAAAgP//DwAAAAAAAAAAAAAAAP//DwAAAAAAAAAAAAAAAP7/BwAAAAAAAAAAAAAA"),
-"size": Vector2i(120, 79)
+"data": PackedByteArray("AAAAAOD/fwAAAADg/38AAAAAAAAAAAD//w8AAAAA//8PAAAAAAAAAAD4//8AAAAA+P//AAAAAAAAAACA//8fAAAAgP//HwAAAAAAAAAA/P//AwAAAPz//wMAAAAAAAAAwP//PwAAAMD//z8AAAAAAAAAAP7//wcAAAD+//8HAAAAAAAAAPD//38AAADw//9/AAAAAAAAAAD///8PAAAA////DwAAAAAAAAD4////AQAA+P///wEAAAAAAACA////HwAAgP///x8AAAAAAAAA/P///wMAAPz///8DAAAAAAAA4P///z8AAOD///8/AAAAAAAAAP7///8HAAD+////BwAAAAAAAPD/////AADw/////wAAAAAAAAD/////DwAA/////w8AAAAA/v///////////////////wcA8P////////////////////8AgP////////////////////8PAPj/////////////////////AcD/////////////////////PwD8/////////////////////wPg/////////////////////38A//////////////////////8H8P//////////////////////gP//////////////////////H/j//////////////////////8H//////////////////////z/+///////////////////////j//////////////////////9//////////////////////////////////////////////////////////////////////////+///////////////////////3/+///////////////////////D//////////////////////8/+P//////////////////////gf//////////////////////H/D//////////////////////wD//////////////////////wfg/////////////////////38A/P////////////////////8DwP////////////////////8/APj/////////////////////AYD/////////////////////DwDw/////////////////////wAA/v///////////////////wcAAAAA/////w8AAP///////38AAAAA8P////8AAPD///////8HAAAAAP7///8HAAD+////////AAAAAOD///8/AADg////////DwAAAAD8////AwAA/P///////wEAAACA////HwAAgP///////z8AAAAA+P///wEAAPj///////8DAAAAAP///w8AAAD///////9/AAAAAPD//38AAADw////////BwAAAAD+//8HAAAA/v///////wAAAADA//8/AAAAwP///////x8AAAAA/P//AwAAAPz///////8BAAAAgP//HwAAAID///////8/AAAAAPj//wAAAAD4////////AwAAAAD//w8AAAAA////////fwAAAADg/38AAAAA4P///////w8AAAAAAAAAAAAAAAAA8P////8AAAAAAAAAAAAAAAAAAP////8PAAAAAAAAAAAAAAAAAOD///9/AAAAAAAAAAAAAAAAAAD+////AwAAAAAAAAAAAAAAAADA////PwAAAAAAAAAAAAAAAAAA+P///wEAAAAAAAAAAAAAAAAAgP///x8AAAAAAAAAAAAAAAAAAPD///8AAAAAAAAAAAAAAAAAAAD///8HAAAAAAAAAAAAAAAAAADg//9/AAAAAAAAAAAAAAAAAAAA/P//AwAAAAAAAAAAAAAAAAAAwP//PwAAAAAAAAAAAAAAAAAAAPj//wEAAAAAAAAAAAAAAAAAAID//w8AAAAAAAAAAAAAAAAAAADw//8AAAAAAAAAAAAAAAAAAAAA/v8HAA=="),
+"size": Vector2i(148, 79)
 }
 
 [resource]
 script = ExtResource("1_bsavf")
 region = 2
 biome = 2
-tiles = Array[Vector2i]([Vector2i(0, -8), Vector2i(1, -8), Vector2i(-1, -8), Vector2i(-2, -8), Vector2i(-1, -9), Vector2i(-2, -9)])
-biome_marker_pos = Vector2i(-2, -10)
+tiles = Array[Vector2i]([Vector2i(0, 4), Vector2i(1, 4), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5), Vector2i(3, 6), Vector2i(4, 6), Vector2i(4, 7)])
+biome_marker_pos = Vector2i(2, 4)
 silhouette = ExtResource("2_gv3k4")
-silhouette_bitmap = SubResource("BitMap_gv3k4")
+silhouette_bitmap = SubResource("BitMap_2e6gi")
 metadata/_custom_type_script = "uid://ck607a5rkx4j4"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc3qwvn1jj37g"
-path="res://.godot/imported/green_swamp.png-10cf80f7374ea59417ac2e062ac5c3d8.ctex"
+uid="uid://vybl2d8dorad"
+path="res://.godot/imported/green_east_swamp.png-cdae6f51231c64bc7aa01e5c7f71c1b0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scene/map/territory_data/silhouettes/green_swamp.png"
-dest_files=["res://.godot/imported/green_swamp.png-10cf80f7374ea59417ac2e062ac5c3d8.ctex"]
+source_file="res://game_scene/map/territory_data/silhouettes/green_east_swamp.png"
+dest_files=["res://.godot/imported/green_east_swamp.png-cdae6f51231c64bc7aa01e5c7f71c1b0.ctex"]
 
 [params]
 

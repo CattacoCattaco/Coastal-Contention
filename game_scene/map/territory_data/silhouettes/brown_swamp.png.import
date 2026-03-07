@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vybl2d8dorad"
-path="res://.godot/imported/brown_east_swamp.png-cabafdd9130dc2805bc5dbc1fa2aa73c.ctex"
+uid="uid://cc3qwvn1jj37g"
+path="res://.godot/imported/brown_swamp.png-7ba15fcd485bad8bd7c0e8d5f4d4f187.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://game_scene/map/territory_data/silhouettes/brown_east_swamp.png"
-dest_files=["res://.godot/imported/brown_east_swamp.png-cabafdd9130dc2805bc5dbc1fa2aa73c.ctex"]
+source_file="res://game_scene/map/territory_data/silhouettes/brown_swamp.png"
+dest_files=["res://.godot/imported/brown_swamp.png-7ba15fcd485bad8bd7c0e8d5f4d4f187.ctex"]
 
 [params]
 

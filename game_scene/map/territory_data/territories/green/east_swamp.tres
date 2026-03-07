@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="TerritoryData" format=4 uid="uid://r2wiv1o4de13"]
 
-[ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_o7hsa"]
-[ext_resource type="Texture2D" uid="uid://vybl2d8dorad" path="res://game_scene/map/territory_data/silhouettes/brown_east_swamp.png" id="2_flhdx"]
+[ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_sv036"]
+[ext_resource type="Texture2D" uid="uid://vybl2d8dorad" path="res://game_scene/map/territory_data/silhouettes/green_east_swamp.png" id="2_uqkmr"]
 
 [sub_resource type="BitMap" id="BitMap_flhdx"]
 data = {
@@ -10,11 +10,11 @@ data = {
 }
 
 [resource]
-script = ExtResource("1_o7hsa")
-region = 2
+script = ExtResource("1_sv036")
+region = 3
 biome = 1
 tiles = Array[Vector2i]([Vector2i(4, -1), Vector2i(4, -2), Vector2i(5, -1), Vector2i(5, -2), Vector2i(6, -1), Vector2i(6, -2), Vector2i(7, 0), Vector2i(7, -1)])
 biome_marker_pos = Vector2i(6, 0)
-silhouette = ExtResource("2_flhdx")
+silhouette = ExtResource("2_uqkmr")
 silhouette_bitmap = SubResource("BitMap_flhdx")
 metadata/_custom_type_script = "uid://ck607a5rkx4j4"
