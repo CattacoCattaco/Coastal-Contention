@@ -14,6 +14,7 @@ const Faction = FactionData.Faction
 @export var map: Map
 @export var turn_order_bar: TurnOrderBar
 
+@export var cancel_button: ActionButton
 @export var action_buttons: Array[Button]
 
 @export var troop_count_panel: PanelContainer
@@ -21,12 +22,13 @@ const Faction = FactionData.Faction
 @export var troop_count_submit_button: Button
 
 var current_action: Action = Action.NONE
+var current_action_data: ActionData = null
+var current_action_step: int = 0
+var chosen_territories: Array[TerritoryButton] = []
 var move_source: TerritoryButton
 
 
 func _ready() -> void:
-	action_buttons[Action.NONE].pressed.connect(clear_action)
-	action_buttons[Action.RECRUIT].pressed.connect(enter_recruit_mode)
 	action_buttons[Action.MOVE].pressed.connect(enter_move_mode)
 	action_buttons[Action.ATTACK].pressed.connect(enter_attack_mode)
 	action_buttons[Action.PASS].pressed.connect(pass_turn)
@@ -36,10 +38,31 @@ func _ready() -> void:
 
 func clear_action() -> void:
 	current_action = Action.NONE
+	current_action_data = null
+	current_action_step = 0
+	chosen_territories = []
 	for territory in map.territories:
 		territory.clear_action_state()
 	troop_count_panel.hide()
 	action_buttons[Action.NONE].hide()
+
+
+func next_step() -> void:
+	for territory in map.territories:
+		territory.clear_action_state()
+	
+	current_action_step += 1
+	
+	var player: FactionData.Faction = turn_order_bar.turn_order[0]
+	
+	if current_action_step > current_action_data._get_territory_count():
+		current_action_data._do_action(chosen_territories, player)
+		clear_action()
+		return
+	
+	for territory in map.territories:
+		if current_action_data._is_territory_choice_valid(territory, chosen_territories, player):
+			territory.enter_action_mode()
 
 
 func enter_recruit_mode() -> void:

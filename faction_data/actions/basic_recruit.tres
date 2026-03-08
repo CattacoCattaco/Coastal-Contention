@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="RecruitAction" format=3 uid="uid://d4fjfnickloco"]
+
+[ext_resource type="Script" uid="uid://c52jvebcvn1je" path="res://faction_data/actions/recruit_action.gd" id="1_lvsmn"]
+
+[resource]
+script = ExtResource("1_lvsmn")
+metadata/_custom_type_script = "uid://c52jvebcvn1je"

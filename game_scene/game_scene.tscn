@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://dhsona311mvph" path="res://game_scene/map/map_territory_lines.png" id="9_mmqx0"]
 [ext_resource type="Resource" uid="uid://b7ndgjy2s3t8c" path="res://game_scene/map/territory_data/regions/red_region.tres" id="10_cvb1i"]
 [ext_resource type="Shader" uid="uid://df0c1jecsx7w6" path="res://game_scene/map/territory_button.gdshader" id="13_wohtb"]
+[ext_resource type="Script" uid="uid://cxg0i7o1eeehw" path="res://game_scene/action_button.gd" id="16_evrs6"]
+[ext_resource type="Resource" uid="uid://d4fjfnickloco" path="res://faction_data/actions/basic_recruit.tres" id="17_3ypd6"]
 [ext_resource type="FontFile" uid="uid://bixxgpddv50wc" path="res://UI/pixel_font_8px.ttf" id="18_dvby8"]
 [ext_resource type="Script" uid="uid://b461bw4xhnylo" path="res://UI/static_ui/attack_screen/attack_screen.gd" id="18_qsae3"]
 [ext_resource type="Shader" uid="uid://bxly3nsjndovh" path="res://random/die/die.gdshader" id="18_x6wej"]
@@ -83,7 +85,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("3_k340r")
 
-[node name="ActionsBar" type="VBoxContainer" parent="UI" unique_id=1622349106 node_paths=PackedStringArray("map", "turn_order_bar", "action_buttons", "troop_count_panel", "troop_count_spin_box", "troop_count_submit_button")]
+[node name="ActionsBar" type="VBoxContainer" parent="UI" unique_id=1622349106 node_paths=PackedStringArray("map", "turn_order_bar", "cancel_button", "action_buttons", "troop_count_panel", "troop_count_spin_box", "troop_count_submit_button")]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -94,18 +96,26 @@ grow_horizontal = 0
 script = ExtResource("2_f63yk")
 map = NodePath("../../Map")
 turn_order_bar = NodePath("../TurnOrderBar")
+cancel_button = NodePath("CancelButton")
 action_buttons = [NodePath("CancelButton"), NodePath("RecruitButton"), NodePath("MoveButton"), NodePath("AttackButton"), NodePath("PassButton")]
 troop_count_panel = NodePath("../TroopCountPanel")
 troop_count_spin_box = NodePath("../TroopCountPanel/MarginContainer/VBoxContainer/VBoxContainer/TroopCountSpinBox")
 troop_count_submit_button = NodePath("../TroopCountPanel/MarginContainer/VBoxContainer/VBoxContainer/SubmitButton")
 
-[node name="CancelButton" type="Button" parent="UI/ActionsBar" unique_id=625551286]
+[node name="CancelButton" type="Button" parent="UI/ActionsBar" unique_id=857376399 node_paths=PackedStringArray("actions_bar")]
 layout_mode = 2
 text = "Cancel"
+script = ExtResource("16_evrs6")
+actions_bar = NodePath("..")
+metadata/_custom_type_script = "uid://cxg0i7o1eeehw"
 
-[node name="RecruitButton" type="Button" parent="UI/ActionsBar" unique_id=900701540]
+[node name="RecruitButton" type="Button" parent="UI/ActionsBar" unique_id=1379200330 node_paths=PackedStringArray("actions_bar")]
 layout_mode = 2
 text = "Recruit"
+script = ExtResource("16_evrs6")
+action = ExtResource("17_3ypd6")
+actions_bar = NodePath("..")
+metadata/_custom_type_script = "uid://cxg0i7o1eeehw"
 
 [node name="MoveButton" type="Button" parent="UI/ActionsBar" unique_id=623191763]
 layout_mode = 2

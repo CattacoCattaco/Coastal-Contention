@@ -22,8 +22,10 @@ func _ready() -> void:
 	faction_boxes = []
 	turn_order = [
 			Faction.PIRATES,
+			Faction.CLERICS,
 			Faction.MYCOLINGS,
 	]
+	turn_order.shuffle()
 	
 	for faction in turn_order:
 		var faction_box: FactionBox = faction_box_scene.instantiate()

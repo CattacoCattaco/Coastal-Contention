@@ -101,6 +101,11 @@ func clear_action_state() -> void:
 	set_border(Color(0, 0, 0, 0))
 
 
+func enter_action_mode() -> void:
+	disabled = false
+	set_border(actions_bar.current_action_data._get_color())
+
+
 func enter_recruit_mode() -> void:
 	disabled = false
 	current_action_state = ActionState.RECRUIT
@@ -133,53 +138,57 @@ func set_border(color: Color) -> void:
 func _pressed() -> void:
 	var faction: Faction = turn_order_bar.turn_order[0]
 	
-	match current_action_state:
-		ActionState.RECRUIT:
-			add_troops(1, faction)
-			actions_bar.clear_action()
-		ActionState.MOVE_SOURCE:
-			actions_bar.clear_action()
-			actions_bar.action_buttons[ActionsBar.Action.NONE].show()
-			actions_bar.current_action = ActionsBar.Action.MOVE
-			actions_bar.move_source = self
-			
-			for neighbor in neighbors:
-				if controller == faction or neighbor.controller == faction:
-					neighbor.enter_move_end_mode()
-		ActionState.MOVE_END:
-			actions_bar.clear_action()
-			actions_bar.action_buttons[ActionsBar.Action.NONE].show()
-			actions_bar.current_action = ActionsBar.Action.MOVE
-			actions_bar.troop_count_panel.show()
-			
-			var move_source: TerritoryButton = actions_bar.move_source
-			
-			actions_bar.troop_count_spin_box.min_value = 1
-			actions_bar.troop_count_spin_box.max_value = move_source.get_troop_count(faction)
-			actions_bar.troop_count_spin_box.value = 1
-			
-			var submit_button: Button = actions_bar.troop_count_submit_button
-			for connection in submit_button.pressed.get_connections():
-				submit_button.pressed.disconnect(connection["callable"])
-			
-			submit_button.pressed.connect(
-					move_source.move_from_troop_count_panel.bind(self, faction))
-		ActionState.ATTACK:
-			actions_bar.clear_action()
-			actions_bar.action_buttons[ActionsBar.Action.NONE].show()
-			actions_bar.current_action = ActionsBar.Action.ATTACK
-			
-			for faction_box in turn_order_bar.faction_boxes:
-				if faction_box.faction == faction or get_troop_count(faction_box.faction) == 0:
-					continue
+	if actions_bar.current_action == null:
+		match current_action_state:
+			ActionState.RECRUIT:
+				add_troops(1, faction)
+				actions_bar.clear_action()
+			ActionState.MOVE_SOURCE:
+				actions_bar.clear_action()
+				actions_bar.action_buttons[ActionsBar.Action.NONE].show()
+				actions_bar.current_action = ActionsBar.Action.MOVE
+				actions_bar.move_source = self
 				
-				faction_box.attackable = true
+				for neighbor in neighbors:
+					if controller == faction or neighbor.controller == faction:
+						neighbor.enter_move_end_mode()
+			ActionState.MOVE_END:
+				actions_bar.clear_action()
+				actions_bar.action_buttons[ActionsBar.Action.NONE].show()
+				actions_bar.current_action = ActionsBar.Action.MOVE
+				actions_bar.troop_count_panel.show()
 				
-				for connection in faction_box.attack_button.pressed.get_connections():
-					faction_box.attack_button.pressed.disconnect(connection["callable"])
+				var move_source: TerritoryButton = actions_bar.move_source
 				
-				faction_box.attack_button.pressed.connect(
-						do_attack.bind(faction, faction_box.faction))
+				actions_bar.troop_count_spin_box.min_value = 1
+				actions_bar.troop_count_spin_box.max_value = move_source.get_troop_count(faction)
+				actions_bar.troop_count_spin_box.value = 1
+				
+				var submit_button: Button = actions_bar.troop_count_submit_button
+				for connection in submit_button.pressed.get_connections():
+					submit_button.pressed.disconnect(connection["callable"])
+				
+				submit_button.pressed.connect(
+						move_source.move_from_troop_count_panel.bind(self, faction))
+			ActionState.ATTACK:
+				actions_bar.clear_action()
+				actions_bar.action_buttons[ActionsBar.Action.NONE].show()
+				actions_bar.current_action = ActionsBar.Action.ATTACK
+				
+				for faction_box in turn_order_bar.faction_boxes:
+					if faction_box.faction == faction or get_troop_count(faction_box.faction) == 0:
+						continue
+					
+					faction_box.attackable = true
+					
+					for connection in faction_box.attack_button.pressed.get_connections():
+						faction_box.attack_button.pressed.disconnect(connection["callable"])
+					
+					faction_box.attack_button.pressed.connect(
+							do_attack.bind(faction, faction_box.faction))
+	else:
+		actions_bar.chosen_territories.append(self)
+		actions_bar.next_step()
 
 
 ## Move troops from this territory to [param to] in an amount based on the
