@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MoveAction" format=3 uid="uid://csjokp0dbw3aj"]
+
+[ext_resource type="Script" uid="uid://b3k0igh55odyv" path="res://faction_data/actions/move_action.gd" id="1_vuoly"]
+
+[resource]
+script = ExtResource("1_vuoly")
+metadata/_custom_type_script = "uid://b3k0igh55odyv"

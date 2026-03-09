@@ -103,19 +103,7 @@ func clear_action_state() -> void:
 
 func enter_action_mode() -> void:
 	disabled = false
-	set_border(actions_bar.current_action_data._get_color())
-
-
-func enter_move_source_mode() -> void:
-	disabled = false
-	current_action_state = ActionState.MOVE_SOURCE
-	set_border(Color("73bed3"))
-
-
-func enter_move_end_mode() -> void:
-	disabled = false
-	current_action_state = ActionState.MOVE_END
-	set_border(Color("73bed3"))
+	set_border(actions_bar.current_action._get_color())
 
 
 func set_border(color: Color) -> void:
@@ -124,59 +112,9 @@ func set_border(color: Color) -> void:
 
 
 func _pressed() -> void:
-	var faction: Faction = turn_order_bar.turn_order[0]
-	
-	if actions_bar.current_action_data == null:
-		match current_action_state:
-			ActionState.RECRUIT:
-				add_troops(1, faction)
-				actions_bar.clear_action()
-			ActionState.MOVE_SOURCE:
-				actions_bar.clear_action()
-				actions_bar.action_buttons[ActionsBar.Action.NONE].show()
-				actions_bar.current_action = ActionsBar.Action.MOVE
-				actions_bar.move_source = self
-				
-				for neighbor in neighbors:
-					if controller == faction or neighbor.controller == faction:
-						neighbor.enter_move_end_mode()
-			ActionState.MOVE_END:
-				actions_bar.clear_action()
-				actions_bar.action_buttons[ActionsBar.Action.NONE].show()
-				actions_bar.current_action = ActionsBar.Action.MOVE
-				actions_bar.troop_count_panel.show()
-				
-				var move_source: TerritoryButton = actions_bar.move_source
-				
-				actions_bar.troop_count_spin_box.min_value = 1
-				actions_bar.troop_count_spin_box.max_value = move_source.get_troop_count(faction)
-				actions_bar.troop_count_spin_box.value = 1
-				
-				var submit_button: Button = actions_bar.troop_count_submit_button
-				for connection in submit_button.pressed.get_connections():
-					submit_button.pressed.disconnect(connection["callable"])
-				
-				submit_button.pressed.connect(
-						move_source.move_from_troop_count_panel.bind(self, faction))
-			ActionState.ATTACK:
-				actions_bar.clear_action()
-				actions_bar.action_buttons[ActionsBar.Action.NONE].show()
-				actions_bar.current_action = ActionsBar.Action.ATTACK
-				
-				for faction_box in turn_order_bar.faction_boxes:
-					if faction_box.faction == faction or get_troop_count(faction_box.faction) == 0:
-						continue
-					
-					faction_box.attackable = true
-					
-					for connection in faction_box.attack_button.pressed.get_connections():
-						faction_box.attack_button.pressed.disconnect(connection["callable"])
-					
-					faction_box.attack_button.pressed.connect(
-							do_attack.bind(faction, faction_box.faction))
-	else:
-		actions_bar.chosen_territories.append(self)
-		actions_bar.next_step()
+	print(territory.resource_path.get_file())
+	actions_bar.chosen_territories.append(self)
+	actions_bar.next_step()
 
 
 ## Move troops from this territory to [param to] in an amount based on the
@@ -193,6 +131,31 @@ func move_from_troop_count_panel(to: TerritoryButton, faction: Faction) -> void:
 func move_troops(amount: int, to: TerritoryButton, faction: Faction) -> void:
 	add_troops(-amount, faction)
 	to.add_troops(amount, faction)
+
+
+func is_valid_move_source(faction: Faction) -> bool:
+	# Important for if neighbor is controlled
+	if get_troop_count(faction) == 0:
+		return false
+	
+	if controller == faction:
+		return true
+	
+	for neighbor in neighbors:
+		if neighbor.controller == faction:
+			return true
+	
+	return true
+
+
+func is_valid_move_end(faction: Faction, from: TerritoryButton) -> bool:
+	if from not in neighbors:
+		return false
+	
+	print("From: ", from.territory.resource_path.get_file())
+	print("To: ", territory.resource_path.get_file())
+	
+	return from.controller == faction or controller == faction
 
 
 func can_attack(attacker: Faction) -> bool:

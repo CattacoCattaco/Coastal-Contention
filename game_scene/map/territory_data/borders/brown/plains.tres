@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="BorderSet" format=3 uid="uid://tp08kehjojvq"]
 
 [ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_y4qkg"]
-[ext_resource type="Resource" uid="uid://c154qwq2nh7o3" path="res://game_scene/map/territory_data/territories/brown/mountains.tres" id="3_ypru8"]
-[ext_resource type="Resource" uid="uid://dpk6yua48kyt3" path="res://game_scene/map/territory_data/territories/brown/south_forest.tres" id="4_m2d3n"]
-[ext_resource type="Resource" uid="uid://b7g5am112y7vi" path="res://game_scene/map/territory_data/territories/brown/plains.tres" id="4_o0s8r"]
+[ext_resource type="Resource" uid="uid://3gjxhcpguae3" path="res://game_scene/map/territory_data/territories/brown/mountains.tres" id="2_jwy81"]
+[ext_resource type="Resource" uid="uid://m0kontbbv73i" path="res://game_scene/map/territory_data/territories/brown/north_forest.tres" id="3_v7vdn"]
+[ext_resource type="Resource" uid="uid://p6a3f7yhc0eb" path="res://game_scene/map/territory_data/territories/brown/south_forest.tres" id="4_qromk"]
 [ext_resource type="Resource" uid="uid://bdk54fwf3x8fw" path="res://game_scene/map/territory_data/territories/brown/swamp.tres" id="5_ee682"]
 [ext_resource type="Script" uid="uid://ckn1oykjvgf2j" path="res://game_scene/map/territory_data/borders/border_set.gd" id="6_7m451"]
-[ext_resource type="Resource" uid="uid://bs78c8o3iqm61" path="res://game_scene/map/territory_data/territories/brown/north_forest.tres" id="7_qx1hr"]
+[ext_resource type="Resource" uid="uid://bnd8ga1pjlaqk" path="res://game_scene/map/territory_data/territories/brown/plains.tres" id="7_v3yvi"]
 
 [resource]
 script = ExtResource("6_7m451")
-source = ExtResource("4_o0s8r")
-connections = Array[ExtResource("1_y4qkg")]([ExtResource("3_ypru8"), ExtResource("7_qx1hr"), ExtResource("4_m2d3n"), ExtResource("5_ee682")])
+source = ExtResource("7_v3yvi")
+connections = Array[ExtResource("1_y4qkg")]([ExtResource("2_jwy81"), ExtResource("3_v7vdn"), ExtResource("4_qromk"), ExtResource("5_ee682")])
 metadata/_custom_type_script = "uid://ckn1oykjvgf2j"

@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="TerritoryData" format=4 uid="uid://bs78c8o3iqm61"]
+[gd_resource type="Resource" script_class="TerritoryData" format=4 uid="uid://m0kontbbv73i"]
 
-[ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_bsavf"]
-[ext_resource type="Texture2D" uid="uid://bumipf76olh2s" path="res://game_scene/map/territory_data/silhouettes/brown_north_forest.png" id="2_gv3k4"]
+[ext_resource type="Script" uid="uid://ck607a5rkx4j4" path="res://game_scene/map/territory_data/territory_data.gd" id="1_f7usx"]
+[ext_resource type="Texture2D" uid="uid://bumipf76olh2s" path="res://game_scene/map/territory_data/silhouettes/brown_north_forest.png" id="2_qlr3y"]
 
 [sub_resource type="BitMap" id="BitMap_2e6gi"]
 data = {
@@ -10,11 +10,11 @@ data = {
 }
 
 [resource]
-script = ExtResource("1_bsavf")
+script = ExtResource("1_f7usx")
 region = 2
 biome = 2
 tiles = Array[Vector2i]([Vector2i(0, 4), Vector2i(1, 4), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5), Vector2i(3, 6), Vector2i(4, 6), Vector2i(4, 7)])
 biome_marker_pos = Vector2i(2, 4)
-silhouette = ExtResource("2_gv3k4")
+silhouette = ExtResource("2_qlr3y")
 silhouette_bitmap = SubResource("BitMap_2e6gi")
 metadata/_custom_type_script = "uid://ck607a5rkx4j4"

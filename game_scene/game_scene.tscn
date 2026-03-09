@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://cxg0i7o1eeehw" path="res://game_scene/action_button.gd" id="16_evrs6"]
 [ext_resource type="Resource" uid="uid://d4fjfnickloco" path="res://faction_data/actions/basic_recruit.tres" id="17_3ypd6"]
 [ext_resource type="FontFile" uid="uid://bixxgpddv50wc" path="res://UI/pixel_font_8px.ttf" id="18_dvby8"]
+[ext_resource type="Resource" uid="uid://csjokp0dbw3aj" path="res://faction_data/actions/basic_move.tres" id="18_pyq6k"]
 [ext_resource type="Script" uid="uid://b461bw4xhnylo" path="res://UI/static_ui/attack_screen/attack_screen.gd" id="18_qsae3"]
 [ext_resource type="Resource" uid="uid://c2jnpb8w8x1jp" path="res://faction_data/actions/basic_attack.tres" id="18_r0woc"]
 [ext_resource type="Shader" uid="uid://bxly3nsjndovh" path="res://random/die/die.gdshader" id="18_x6wej"]
@@ -118,9 +119,13 @@ action = ExtResource("17_3ypd6")
 actions_bar = NodePath("..")
 metadata/_custom_type_script = "uid://cxg0i7o1eeehw"
 
-[node name="MoveButton" type="Button" parent="UI/ActionsBar" unique_id=623191763]
+[node name="MoveButton" type="Button" parent="UI/ActionsBar" unique_id=102179148 node_paths=PackedStringArray("actions_bar")]
 layout_mode = 2
 text = "Move"
+script = ExtResource("16_evrs6")
+action = ExtResource("18_pyq6k")
+actions_bar = NodePath("..")
+metadata/_custom_type_script = "uid://cxg0i7o1eeehw"
 
 [node name="AttackButton" type="Button" parent="UI/ActionsBar" unique_id=976962434 node_paths=PackedStringArray("actions_bar")]
 layout_mode = 2
@@ -130,9 +135,13 @@ action = ExtResource("18_r0woc")
 actions_bar = NodePath("..")
 metadata/_custom_type_script = "uid://cxg0i7o1eeehw"
 
-[node name="PassButton" type="Button" parent="UI/ActionsBar" unique_id=1256915068]
+[node name="PassButton" type="Button" parent="UI/ActionsBar" unique_id=870954747 node_paths=PackedStringArray("actions_bar")]
 layout_mode = 2
 text = "Pass"
+script = ExtResource("16_evrs6")
+actions_bar = NodePath("..")
+is_pass_button = true
+metadata/_custom_type_script = "uid://cxg0i7o1eeehw"
 
 [node name="TurnOrderBar" type="VBoxContainer" parent="UI" unique_id=1358279048]
 custom_minimum_size = Vector2(40, 40)
