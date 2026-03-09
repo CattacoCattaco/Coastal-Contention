@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://d4fjfnickloco" path="res://faction_data/actions/basic_recruit.tres" id="17_3ypd6"]
 [ext_resource type="FontFile" uid="uid://bixxgpddv50wc" path="res://UI/pixel_font_8px.ttf" id="18_dvby8"]
 [ext_resource type="Script" uid="uid://b461bw4xhnylo" path="res://UI/static_ui/attack_screen/attack_screen.gd" id="18_qsae3"]
+[ext_resource type="Resource" uid="uid://c2jnpb8w8x1jp" path="res://faction_data/actions/basic_attack.tres" id="18_r0woc"]
 [ext_resource type="Shader" uid="uid://bxly3nsjndovh" path="res://random/die/die.gdshader" id="18_x6wej"]
 [ext_resource type="Texture2D" uid="uid://c4m2w30hyx4ki" path="res://random/die/attack_palette.png" id="19_shqy7"]
 [ext_resource type="Texture2D" uid="uid://fg475xql8ymy" path="res://random/die/32px/die_1.png" id="22_qsae3"]
@@ -121,9 +122,13 @@ metadata/_custom_type_script = "uid://cxg0i7o1eeehw"
 layout_mode = 2
 text = "Move"
 
-[node name="AttackButton" type="Button" parent="UI/ActionsBar" unique_id=1694461899]
+[node name="AttackButton" type="Button" parent="UI/ActionsBar" unique_id=976962434 node_paths=PackedStringArray("actions_bar")]
 layout_mode = 2
 text = "Attack"
+script = ExtResource("16_evrs6")
+action = ExtResource("18_r0woc")
+actions_bar = NodePath("..")
+metadata/_custom_type_script = "uid://cxg0i7o1eeehw"
 
 [node name="PassButton" type="Button" parent="UI/ActionsBar" unique_id=1256915068]
 layout_mode = 2

@@ -106,12 +106,6 @@ func enter_action_mode() -> void:
 	set_border(actions_bar.current_action_data._get_color())
 
 
-func enter_recruit_mode() -> void:
-	disabled = false
-	current_action_state = ActionState.RECRUIT
-	set_border(Color("75a743"))
-
-
 func enter_move_source_mode() -> void:
 	disabled = false
 	current_action_state = ActionState.MOVE_SOURCE
@@ -124,12 +118,6 @@ func enter_move_end_mode() -> void:
 	set_border(Color("73bed3"))
 
 
-func enter_attack_mode() -> void:
-	disabled = false
-	current_action_state = ActionState.ATTACK
-	set_border(Color("a53030"))
-
-
 func set_border(color: Color) -> void:
 	var shader_material: ShaderMaterial = material
 	shader_material.set_shader_parameter("outline_color", color)
@@ -138,7 +126,7 @@ func set_border(color: Color) -> void:
 func _pressed() -> void:
 	var faction: Faction = turn_order_bar.turn_order[0]
 	
-	if actions_bar.current_action == null:
+	if actions_bar.current_action_data == null:
 		match current_action_state:
 			ActionState.RECRUIT:
 				add_troops(1, faction)
