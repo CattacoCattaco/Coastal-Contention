@@ -8,9 +8,9 @@ func _get_name() -> String:
 
 func _get_instruction(step: int) -> String:
 	match step:
-		0:
-			return "Choose a territory to move from"
 		1:
+			return "Choose a territory to move from"
+		2:
 			return "Choose a territory to move to"
 	
 	return ""

@@ -9,8 +9,8 @@ default_font = ExtResource("1_6122u")
 default_font_size = 16
 
 [node name="FactionBox" type="ColorRect" unique_id=1450526883 node_paths=PackedStringArray("attack_button")]
-custom_minimum_size = Vector2(114, 32)
-offset_right = 114.0
+custom_minimum_size = Vector2(104, 32)
+offset_right = 104.0
 offset_bottom = 32.0
 size_flags_horizontal = 0
 mouse_filter = 2
@@ -20,6 +20,7 @@ script = ExtResource("1_pp31g")
 attack_button = NodePath("AttackButton")
 
 [node name="AttackButton" type="Button" parent="." unique_id=1028108701]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

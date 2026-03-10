@@ -112,7 +112,6 @@ func set_border(color: Color) -> void:
 
 
 func _pressed() -> void:
-	print(territory.resource_path.get_file())
 	actions_bar.chosen_territories.append(self)
 	actions_bar.next_step()
 
@@ -151,9 +150,6 @@ func is_valid_move_source(faction: Faction) -> bool:
 func is_valid_move_end(faction: Faction, from: TerritoryButton) -> bool:
 	if from not in neighbors:
 		return false
-	
-	print("From: ", from.territory.resource_path.get_file())
-	print("To: ", territory.resource_path.get_file())
 	
 	return from.controller == faction or controller == faction
 

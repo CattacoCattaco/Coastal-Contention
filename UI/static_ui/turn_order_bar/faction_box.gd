@@ -34,7 +34,7 @@ func _draw() -> void:
 	var name_alignment: HorizontalAlignment = HORIZONTAL_ALIGNMENT_LEFT
 	var faction_color: Color = faction_data.main_color
 	
-	custom_minimum_size.x = font.get_string_size(faction_name, name_alignment, -1, font_size).x + 19
+	custom_minimum_size.x = font.get_string_size(faction_name, name_alignment, -1, font_size).x + 10
 	
 	draw_rect(Rect2(Vector2.ZERO, custom_minimum_size), faction_color)
 	draw_string(font, name_pos, faction_name, name_alignment, -1, font_size)
